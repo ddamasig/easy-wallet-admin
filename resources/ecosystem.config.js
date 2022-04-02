@@ -1,11 +1,11 @@
 module.exports = {
   apps: [
     {
-      name: 'dev-easy-wallet',
+      name: 'dev-easy-wallet-admin',
       script: './start.js',
       env: {
         HOST: 'localhost',
-        PORT: 3000
+        PORT: 3001
       }
     }
   ]
