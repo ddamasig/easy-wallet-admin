@@ -1,0 +1,12 @@
+body {
+  font-family: Quicksand !important;
+}
+
+.flip {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.v-text-field__prefix {
+  padding-right: .5em !important;
+}

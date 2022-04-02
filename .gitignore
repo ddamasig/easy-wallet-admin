@@ -1,0 +1,4 @@
+vendor
+.env
+resources/node_modules
+.idea
