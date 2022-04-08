@@ -12,10 +12,9 @@
         sm="9"
       >
 
-        <h3>Members Management</h3>
+        <h3>Top Performing Members</h3>
         <small>
-          Here are the list of existing members.
-          Click on the member's name to view more details and access actions.
+          Here are the list of members with the most cash-in transactions.
         </small>
         <v-card
           flat
@@ -27,15 +26,6 @@
                 cols="12"
                 sm="4"
               >
-                <v-btn
-                  color="primary"
-                  elevation="0"
-                  class="mr-2"
-                  small
-                  fab
-                >
-                  <v-icon>mdi-content-copy</v-icon>
-                </v-btn>
                 <v-btn
                   color="primary"
                   elevation="0"
@@ -59,7 +49,7 @@
                 <v-text-field
                   v-model="filters.date_start"
                   type="date"
-                  label="Joined From"
+                  label="From"
                   dense
                 ></v-text-field>
               </v-col>
@@ -94,16 +84,7 @@
             :headers="headers"
             :items="users"
             :search="search"
-          >
-            <template v-slot:[`item.name`]="{ item }">
-              <span
-                class="primary--text font-weight-medium"
-                @click="viewUserPofile(item)"
-              >
-                {{ item.name }}
-              </span>
-            </template>
-          </v-data-table>
+          ></v-data-table>
         </v-card>
       </v-col>
 
@@ -130,7 +111,7 @@ export default {
           value: 'name',
         },
         {text: 'Email', value: 'email'},
-        {text: 'Current Balance', value: 'current_balance'},
+        {text: 'Cash-In Amount', value: 'cash_in_amount'},
         {text: 'Last Login', value: 'last_login'},
         {text: 'Date Joined', value: 'date_joined'},
       ],
@@ -138,7 +119,7 @@ export default {
         {
           name: 'Juan Dela Cruz',
           email: 'jdelacruz@example.net',
-          current_balance: 'PHP 7,200',
+          cash_in_amount: 'PHP 28,200',
           user_type: 'Member',
           date_joined: 'April 8, 2022',
           last_login: 'March 24, 2022',
@@ -146,7 +127,7 @@ export default {
         {
           name: 'Juan Dela Cruz',
           email: 'jdelacruz@example.net',
-          current_balance: 'PHP 7,200',
+          cash_in_amount: 'PHP 27,000',
           user_type: 'Member',
           date_joined: 'March 31, 2022',
           last_login: 'March 24, 2022',
@@ -154,7 +135,7 @@ export default {
         {
           name: 'Juan Dela Cruz',
           email: 'jdelacruz@example.net',
-          current_balance: 'PHP 7,200',
+          cash_in_amount: 'PHP 24,000',
           user_type: 'Member',
           date_joined: 'March 26, 2022',
           last_login: 'March 24, 2022',
@@ -162,7 +143,7 @@ export default {
         {
           name: 'Juan Dela Cruz',
           email: 'jdelacruz@example.net',
-          current_balance: 'PHP 7,200',
+          cash_in_amount: 'PHP 20,500',
           user_type: 'Member',
           date_joined: 'March 26, 2022',
           last_login: 'March 24, 2022',
@@ -170,7 +151,7 @@ export default {
         {
           name: 'Juan Dela Cruz',
           email: 'jdelacruz@example.net',
-          current_balance: 'PHP 7,200',
+          cash_in_amount: 'PHP 17,000',
           user_type: 'Member',
           date_joined: 'March 25, 2022',
           last_login: 'March 24, 2022',
@@ -178,7 +159,7 @@ export default {
         {
           name: 'Juan Dela Cruz',
           email: 'jdelacruz@example.net',
-          current_balance: 'PHP 7,200',
+          cash_in_amount: 'PHP 15,350',
           user_type: 'Member',
           date_joined: 'March 21, 2022',
           last_login: 'March 24, 2022',
@@ -186,18 +167,12 @@ export default {
         {
           name: 'Juan Dela Cruz',
           email: 'jdelacruz@example.net',
-          current_balance: 'PHP 7,200',
+          cash_in_amount: 'PHP 12,000',
           user_type: 'Member',
           date_joined: 'March 16, 2022',
           last_login: 'March 24, 2022',
         },
       ],
-    }
-  },
-
-  methods: {
-    viewUserPofile(user) {
-      this.$router.push(`/members/${user.email}`)
     }
   }
 }

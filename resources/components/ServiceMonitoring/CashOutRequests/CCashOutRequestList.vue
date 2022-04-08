@@ -9,10 +9,13 @@
         placeholder="Type keywords here"
         prepend-inner-icon="mdi-magnify"
         hide-details
+        rounded
         dense
         filled
-        rounded
       ></v-text-field>
+      <v-btn icon color="primary">
+        <v-icon>mdi-file-excel</v-icon>
+      </v-btn>
     </v-card-title>
     <v-card-text
       class="overflow-auto px-0"
