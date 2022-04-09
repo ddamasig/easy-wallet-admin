@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="space-around">
+  <v-row justify="end">
     <v-menu
       bottom
       origin="center center"
@@ -8,7 +8,6 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          class="white"
           icon
           v-bind="attrs"
           v-on="on"

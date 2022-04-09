@@ -5,7 +5,6 @@
       <v-container>
         <Nuxt/>
       </v-container>
-      <c-bottom-navigation></c-bottom-navigation>
     </v-main>
 
   </v-app>

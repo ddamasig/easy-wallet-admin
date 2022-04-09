@@ -28,7 +28,7 @@
           flat
           class="pa-3 mb-0 d-block d-sm-none"
         >
-          <v-icon>
+          <v-icon @click="selectedItem = null">
             mdi-arrow-left
           </v-icon>
         </v-toolbar>
@@ -50,7 +50,7 @@ export default {
   components: {CELoadingList, CELoadingDetails},
   layout: 'home',
   data: () => ({
-    selectedItem: {},
+    selectedItem: null,
     items: [
       {
         network: 'Globe',
@@ -106,13 +106,13 @@ export default {
   }),
   computed: {
     listClass() {
-      if (this.selectedItem) {
+      if (!this.selectedItem) {
         return 'd-block'
       }
       return 'd-none d-sm-block'
     },
     detailsClass() {
-      if (!this.selectedItem) {
+      if (this.selectedItem) {
         return 'd-block'
       }
       return 'd-none d-sm-block'

@@ -91,15 +91,8 @@ export default {
     }
   },
   created() {
-    this.autoSelectFirstItem()
   },
   methods: {
-    autoSelectFirstItem() {
-      // Check if there is at least one item
-      if (this.items.length !== 0) {
-        this.selectedItem = this.items[0]
-      }
-    }
   }
 }
 </script>

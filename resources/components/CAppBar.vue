@@ -1,30 +1,33 @@
 <template>
   <v-app-bar
-    flat
-    color="transparent"
-    class="my-4"
+    app
+    elevate-on-scroll
   >
-    <v-list-item>
-      <v-list-item-avatar>
-        <v-img src="/avatars/avatar1.png"></v-img>
-      </v-list-item-avatar>
+    <v-app-bar-nav-icon
+      @click="toggleNavigationBar"
+    ></v-app-bar-nav-icon>
 
-      <v-list-item-content>
-        <v-list-item-subtitle class="font-weight-medium">
-          Good morning,
-        </v-list-item-subtitle>
-        <v-list-item-title class="font-weight-bold">
-          Juan Dela Cruz
-        </v-list-item-title>
-      </v-list-item-content>
+    <span class="font-weight-medium">
+      EasyWallet Admin
+    </span>
 
-      <v-list-item-action>
-        <v-list-item-action-text>
-          <c-notifications></c-notifications>
+    <v-spacer></v-spacer>
 
-
-        </v-list-item-action-text>
-      </v-list-item-action>
-    </v-list-item>
+    <c-notifications></c-notifications>
   </v-app-bar>
 </template>
+
+
+<script>
+export default {
+  methods: {
+    toggleNavigationBar() {
+
+      this.$root.$emit('toggle-navigation-drawer')
+    }
+  }
+}
+</script>
+
+
+

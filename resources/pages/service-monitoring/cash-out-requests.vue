@@ -28,7 +28,7 @@
           flat
           class="pa-3 mb-0 d-block d-sm-none"
         >
-          <v-icon>
+          <v-icon @click="selectedItem = {}">
             mdi-arrow-left
           </v-icon>
         </v-toolbar>
@@ -90,7 +90,12 @@ export default {
         amount: 'PHP 4,700',
         date: 'March 30, 2022',
         status: 'Awaiting Funds',
-        id: 'MT9123JK22'
+        id: 'MT9123JK22',
+        images: [
+          'https://placekitten.com/640/360',
+          'https://placekitten.com/640/361',
+          'https://placekitten.com/640/362',
+        ]
       },
       {
         member: 'Juan Dela Cruz',
@@ -98,7 +103,12 @@ export default {
         amount: 'PHP 1,250',
         date: 'March 30, 2022',
         status: 'Awaiting Funds',
-        id: 'MT9123JK22'
+        id: 'MT9123JK22',
+        images: [
+          'https://placekitten.com/640/360',
+          'https://placekitten.com/640/361',
+          'https://placekitten.com/640/362',
+        ]
       },
       {
         member: 'Juan Dela Cruz',
@@ -106,7 +116,12 @@ export default {
         amount: 'PHP 3,250',
         date: 'March 30, 2022',
         status: 'Awaiting Funds',
-        id: 'MT9123JK22'
+        id: 'MT9123JK22',
+        images: [
+          'https://placekitten.com/640/360',
+          'https://placekitten.com/640/361',
+          'https://placekitten.com/640/362',
+        ]
       },
       {
         member: 'John Doe',
@@ -114,19 +129,24 @@ export default {
         amount: 'PHP 2,500',
         date: 'March 30, 2022',
         status: 'Awaiting Funds',
-        id: 'MT9123JK22'
+        id: 'MT9123JK22',
+        images: [
+          'https://placekitten.com/640/360',
+          'https://placekitten.com/640/361',
+          'https://placekitten.com/640/362',
+        ]
       },
     ]
   }),
   computed: {
     listClass() {
-      if (this.selectedItem) {
+      if (this.selectedItem.images === undefined) {
         return 'd-block'
       }
       return 'd-none d-sm-block'
     },
     detailsClass() {
-      if (!this.selectedItem) {
+      if (this.selectedItem.images !== undefined) {
         return 'd-block'
       }
       return 'd-none d-sm-block'

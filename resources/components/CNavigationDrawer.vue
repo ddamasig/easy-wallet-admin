@@ -1,18 +1,14 @@
 <template>
-  <v-navigation-drawer
-    app
-    fixed
-    class="d-none d-sm-block"
-  >
+  <v-navigation-drawer app fixed v-model="navigationDrawer" >
     <v-list-item color="primary">
       <v-list-item-content>
         <v-list-item-title class="text-h6 font-weight-black">
           <h3 class="primary--text">
-            EasyWallet
+            ID#00041234
           </h3>
         </v-list-item-title>
         <v-list-item-subtitle>
-          Admin
+          Juan Dela Cruz
         </v-list-item-subtitle>
       </v-list-item-content>
       <v-list-item-avatar>
@@ -78,6 +74,7 @@
 export default {
   data() {
     return {
+      navigationDrawer: true,
       items: [
         {title: 'Dashboard', icon: 'mdi-chart-box-plus-outline', to: '/'},
         {title: 'Members Management', icon: 'mdi-account-group', to: '/members'},
@@ -98,6 +95,14 @@ export default {
       ],
       right: null,
     }
+  },
+  methods: {
+    handleToggleNavigationEventDrawer() {
+      this.navigationDrawer = !this.navigationDrawer
+    }
+  },
+  mounted() {
+    this.$root.$on('toggle-navigation-drawer', this.handleToggleNavigationEventDrawer)
   }
 }
 </script>
