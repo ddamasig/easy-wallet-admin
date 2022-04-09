@@ -130,7 +130,7 @@ export default {
     model: {
       reason: ''
     },
-    dialog: true
+    dialog: false
   }),
   methods: {
     selectImage(image) {

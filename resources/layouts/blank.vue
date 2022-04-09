@@ -2,13 +2,9 @@
   <v-app>
 
     <v-main>
-      <c-navigation-drawer></c-navigation-drawer>
-      <v-container>
-        <v-row justify="center">
-          <v-col
-            cols="12"
-            sm="4"
-          >
+      <v-container class="fill-height">
+        <v-row justify="center" class="fill-height" align="center">
+          <v-col cols="12" class="text-center">
             <Nuxt/>
           </v-col>
         </v-row>

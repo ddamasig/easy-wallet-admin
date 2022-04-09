@@ -1,81 +1,113 @@
 <template>
-  <div class="pb-12">
+  <div class="mb-12">
     <c-app-bar></c-app-bar>
-    <v-row justify="center" align="start">
+    <v-row
+      justify="center"
+      align="start"
+      class="px-3 pb-6"
+      dense
+    >
       <v-col
         cols="12"
-        sm="3"
-        class="mt-6 mr-sm-8"
+        sm="9"
+        class="mb-4"
       >
-        <v-row>
-          <v-col cols="12">
-            <!-- Points BAN -->
-            <c-points-card></c-points-card>
-          </v-col>
+
+        <h3>Dashboard</h3>
+        <small>Here is a quick overview of important numbers.</small>
+        <v-row class="mt-1">
           <v-col
-            cols="4"
-            v-for="(feature,index) in features"
+            v-for="(card,index) in cards"
             :key="index"
+            cols="12"
+            sm="4"
           >
-            <!-- Feature Buttons -->
-            <c-feature-card :feature="feature"></c-feature-card>
+            <c-dashboard-card
+              :color="card.color"
+              :text-color="card.textColor"
+              :value="card.value"
+              :label="card.label"
+              :icon="card.icon"
+            ></c-dashboard-card>
+          </v-col>
+        </v-row>
+        <v-row>
+
+          <v-col cols="12">
+            <h3>Sales Report</h3>
+            <small>Here is an overview of your revenue based on markup.</small>
+          </v-col>
+          <v-col cols="12" sm="8">
+            <c-statistics></c-statistics>
+          </v-col>
+          <v-col cols="12" sm="4">
+            <c-pie-chart></c-pie-chart>
           </v-col>
         </v-row>
       </v-col>
 
-      <v-col cols="12" sm="3">
-        <div class="mb-3">
-          <h3>Transaction History</h3>
-          <small>Showing top 10 most recent transactions</small>
-        </div>
-        <c-transaction-history></c-transaction-history>
+      <v-col
+        cols="12"
+        sm="3"
+      >
+        <v-row>
+          <v-col cols="12">
+            <h3>Cash-Out Requests</h3>
+            <small class="mb-3">
+              Here are the latest withdrawal requests from members.
+            </small>
+          </v-col>
+          <v-col cols="12">
+            <c-dashboard-cash-out-request-table></c-dashboard-cash-out-request-table>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </div>
-
 </template>
 
 <script>
+import CPieChart from "../components/CPieChart";
+import CDashboardCard from "@/components/Dashboard/CDashboardCard";
+import CDashboardCashOutRequestTable from "@/components/Dashboard/CDashboardCashOutRequestTable";
+
 export default {
+  name: 'DashboardIndex',
+  components: {CPieChart, CDashboardCard, CDashboardCashOutRequestTable},
   layout: 'home',
-  name: 'IndexPage',
   data: () => ({
-    features: [
+    model: {
+      alias: 'JD Loading Station',
+      full_name: 'Juan R. Dela Cruz',
+      first_name: 'Juan',
+      middle_name: 'Reyes',
+      last_name: 'Dela Cruz',
+      birthdate: 'March 31, 1990',
+      email: 'juandelacruz@gmail.com',
+      mobile_number: '1231231234',
+    },
+    cards: [
       {
-        name: 'Transfer',
-        icon: 'mdi-credit-card-fast',
-        color: 'blue',
-        to: '/transfer',
-        disabled: false
+        color: 'primary',
+        textColor: 'white--text',
+        value: 'P 36,422',
+        label: 'Sales',
+        icon: 'mdi-sale',
       },
       {
-        name: 'E-Load',
-        icon: 'mdi-cellphone-text',
         color: 'orange',
-        to: '/eloading/recipient',
-        disabled: false
+        textColor: 'white--text',
+        value: 'P 75,500',
+        label: 'Commission',
+        icon: 'mdi-piggy-bank',
       },
       {
-        name: 'Tickets',
-        icon: 'mdi-airplane',
-        color: 'teal',
-        to: '/',
-        disabled: true
+        color: 'success',
+        textColor: 'white--text',
+        value: 'P 55,000',
+        label: 'Total Withdrawals',
+        icon: 'mdi-cash-fast',
       },
-      {
-        name: 'Referral',
-        icon: 'mdi-gift-open-outline',
-        color: 'purple',
-        to: '/referral',
-        disabled: false
-      },
-      {
-        name: 'Pay Bills',
-        icon: 'mdi-receipt',
-        color: 'pink',
-        to: '/pay-bills',
-        disabled: false
-      }
     ]
   })
 }

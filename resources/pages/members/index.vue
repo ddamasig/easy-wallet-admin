@@ -27,15 +27,8 @@
                 cols="12"
                 sm="4"
               >
-                <v-btn
-                  color="primary"
-                  elevation="0"
-                  class="mr-2"
-                  small
-                  fab
-                >
-                  <v-icon>mdi-content-copy</v-icon>
-                </v-btn>
+                <c-generate-referral-link-modal
+                ></c-generate-referral-link-modal>
                 <v-btn
                   color="primary"
                   elevation="0"
@@ -112,9 +105,12 @@
 </template>
 
 <script>
+import CGenerateReferralLinkModal from "@/components/Referrals/CGenerateReferralLinkModal";
+
 export default {
   name: 'MembersIndex',
   layout: 'home',
+  components: {CGenerateReferralLinkModal},
   data() {
     return {
       search: '',

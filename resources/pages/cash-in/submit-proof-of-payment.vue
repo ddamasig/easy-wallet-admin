@@ -86,7 +86,7 @@
 
 <script>
 export default {
-  layout: 'blank',
+  layout: 'default',
   name: 'SubmitProofOfPayment',
   data: () => ({
     model: {

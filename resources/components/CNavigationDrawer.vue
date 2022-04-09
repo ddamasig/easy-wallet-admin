@@ -79,7 +79,7 @@ export default {
   data() {
     return {
       items: [
-        {title: 'Dashboard', icon: 'mdi-chart-box-plus-outline', to: '/dashboard'},
+        {title: 'Dashboard', icon: 'mdi-chart-box-plus-outline', to: '/'},
         {title: 'Members Management', icon: 'mdi-account-group', to: '/members'},
         {title: 'Top Performing Members', icon: 'mdi-trophy', to: '/top-performing-members'},
         {title: 'Staff Management', icon: 'mdi-family-tree', to: '/staff'},

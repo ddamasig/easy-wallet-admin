@@ -19,7 +19,10 @@
         sm="4"
       >
         <c-membership-settings-panel
+          class="mb-4"
         ></c-membership-settings-panel>
+        <c-service-inclusions-panel
+        ></c-service-inclusions-panel>
       </v-col>
     </v-row>
   </div>
@@ -29,10 +32,11 @@
 
 import CReferralSettingsPanel from "@/components/Settings/CReferralSettingsPanel";
 import CMembershipSettingsPanel from "@/components/Settings/CMembershipSettingsPanel";
+import CServiceInclusionsPanel from "@/components/Settings/CServiceInclusionsPanel";
 
 export default {
   name: 'ReferralSettings',
-  components: {CReferralSettingsPanel, CMembershipSettingsPanel},
+  components: {CReferralSettingsPanel, CMembershipSettingsPanel, CServiceInclusionsPanel},
 
   layout: 'home',
   data: () => ({

@@ -131,7 +131,7 @@
 
 <script>
 export default {
-  layout: 'blank',
+  layout: 'default',
   name: 'HowToCashIn',
   data: () => ({
     paymentOptions: [
