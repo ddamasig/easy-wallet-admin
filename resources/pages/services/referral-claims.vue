@@ -9,8 +9,8 @@
     >
       <v-col
         cols="12"
-        sm="5"
-        md="3"
+        sm="6"
+        md="5"
         :class="listClass"
       >
         <c-referral-claim-list
@@ -63,8 +63,8 @@ export default {
         referred_by: 'Juan Dela Cruz',
         new_member_name: 'LeBron James',
         new_member_email: 'lebronjames@example.net',
-        date: 'March 30, 2022',
-        status: 'To Deposit Membership Fee',
+        date: '10:30 am, March 30, 2022',
+        status: 'Invitation Sent',
         id: 'MT9123JK22',
         images: [
           'https://placekitten.com/640/360',
@@ -76,8 +76,8 @@ export default {
         referred_by: 'Juan Dela Cruz',
         new_member_name: 'Derek Rose',
         new_member_email: 'drose@example.net',
-        date: 'March 30, 2022',
-        status: 'Awaiting Confirmation',
+        date: '10:30 am, March 30, 2022',
+        status: 'Invitation Sent',
         id: 'MT9123JK22',
         images: [
           'https://placekitten.com/640/360',
@@ -87,8 +87,8 @@ export default {
         referred_by: 'Juan Dela Cruz',
         new_member_name: 'George St. Pierre',
         new_member_email: 'gsp@example.net',
-        date: 'March 30, 2022',
-        status: 'Awaiting Confirmation',
+        date: '10:30 am, March 30, 2022',
+        status: 'Invitation Sent',
         id: 'MT9123JK22',
         images: [
           'https://placekitten.com/640/360',
@@ -99,8 +99,8 @@ export default {
         referred_by: 'Juan Dela Cruz',
         new_member_name: 'Israel Adesanya',
         new_member_email: 'stylebender@example.net',
-        date: 'March 30, 2022',
-        status: 'To Deposit Membership Fee',
+        date: '10:30 am, March 30, 2022',
+        status: 'Invitation Sent',
         id: 'MT9123JK22',
         images: [
           'https://placekitten.com/640/360',
@@ -112,8 +112,8 @@ export default {
         referred_by: 'Juan Dela Cruz',
         new_member_name: 'Henry Cejudo',
         new_member_email: 'triplec@example.net',
-        date: 'March 30, 2022',
-        status: 'To Deposit Membership Fee',
+        date: '10:30 am, March 30, 2022',
+        status: 'Invitation Sent',
         id: 'MT9123JK22',
         images: [
           'https://placekitten.com/640/360',

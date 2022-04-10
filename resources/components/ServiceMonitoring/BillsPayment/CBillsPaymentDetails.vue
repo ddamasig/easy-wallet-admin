@@ -42,6 +42,7 @@
       </v-simple-table>
 
       <p v-else class="text-center py-12">
+        <v-icon>mdi-cursor-default-click-outline</v-icon>
         Select an item from the left panel first.
       </p>
     </v-card-text>

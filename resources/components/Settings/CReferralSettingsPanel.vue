@@ -36,7 +36,7 @@
       <v-row dense>
         <v-col cols="12">
           <h2 class="font-weight-medium">Requirements</h2>
-          <p class="my-0 py-0">Ask potential members to upload the following attachments during registration.</p>
+          <p class="my-0 py-0">Ask potential members to upload the following images during registration.</p>
         </v-col>
         <v-col cols="12">
           <v-list @click.prevent>

@@ -22,6 +22,14 @@
               <td>{{ selectedItem.member }}</td>
             </tr>
             <tr>
+              <td class="font-weight-medium">Cash-out Method</td>
+              <td>{{ selectedItem.method }}</td>
+            </tr>
+            <tr>
+              <td class="font-weight-medium">Number</td>
+              <td>{{ selectedItem.number }}</td>
+            </tr>
+            <tr>
               <td class="font-weight-medium">Amount</td>
               <td>{{ selectedItem.amount }}</td>
             </tr>
@@ -37,12 +45,20 @@
               <td class="font-weight-medium">Status</td>
               <td :class="getStatusColor()">{{ selectedItem.status }}</td>
             </tr>
+            <tr>
+              <td class="font-weight-medium">Approved/Disapproved At</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td class="font-weight-medium">Approved/Disapproved By</td>
+              <td>N/A</td>
+            </tr>
             </tbody>
           </v-simple-table>
         </v-col>
 <!--        <v-col cols="12">-->
 <!--          <span class="font-weight-black">-->
-<!--            Attachments-->
+<!--            services-->
 <!--          </span>-->
 <!--        </v-col>-->
         <!--        <v-col cols="4" v-for="(image,index) in selectedItem.images" :key="index">-->
@@ -52,6 +68,7 @@
         <!--        </v-col>-->
       </v-row>
       <p v-else class="text-center py-12">
+        <v-icon>mdi-cursor-default-click-outline</v-icon>
         Select an item from the left panel first.
       </p>
     </v-card-text>

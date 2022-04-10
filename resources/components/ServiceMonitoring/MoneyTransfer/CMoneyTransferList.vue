@@ -13,6 +13,15 @@
         filled
         rounded
       ></v-text-field>
+      <v-row class="mt-2" dense>
+        <v-col cols="12">
+          <v-tabs grow show-arrows align-with-title>
+            <v-tab v-for="(item,index) in filters" :key="index" class="mr-1">
+              {{ item.name }} - {{ item.count }}
+            </v-tab>
+          </v-tabs>
+        </v-col>
+      </v-row>
     </v-card-title>
     <v-card-text
       class="overflow-auto px-0"
@@ -80,7 +89,22 @@ export default {
     items: Array
   },
   data: () => ({
-    selectedItem: {}
+    selectedItem: {},
+    filter: null,
+    filters: [
+      {
+        name: 'Pending',
+        count: '10'
+      },
+      {
+        name: 'Success',
+        count: '36'
+      },
+      {
+        name: 'Failed',
+        count: '0'
+      },
+    ]
   }),
   watch: {
     selectedItem(val) {

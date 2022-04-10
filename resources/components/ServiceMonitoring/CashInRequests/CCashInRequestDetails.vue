@@ -36,12 +36,20 @@
               <td class="font-weight-medium">Status</td>
               <td :class="getStatusColor()">{{ selectedItem.status }}</td>
             </tr>
+            <tr>
+              <td class="font-weight-medium">Approved/Disapproved At</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td class="font-weight-medium">Approved/Disapproved By</td>
+              <td>N/A</td>
+            </tr>
             </tbody>
           </v-simple-table>
         </v-col>
         <v-col cols="12">
           <span class="font-weight-black">
-            Attachments
+            Images
           </span>
         </v-col>
         <v-col cols="4" v-for="(image,index) in selectedItem.images" :key="index">

@@ -19,6 +19,10 @@
           <td>{{ selectedItem.member }}</td>
         </tr>
         <tr>
+          <td class="font-weight-medium">Customer Name</td>
+          <td>{{ selectedItem.customer_name }}</td>
+        </tr>
+        <tr>
           <td class="font-weight-medium">Network</td>
           <td>{{ selectedItem.network }}</td>
         </tr>
@@ -46,6 +50,7 @@
       </v-simple-table>
 
       <p v-else class="text-center py-12">
+        <v-icon>mdi-cursor-default-click-outline</v-icon>
         Select an item from the left panel first.
       </p>
     </v-card-text>

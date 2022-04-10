@@ -17,7 +17,7 @@
 
     <v-card>
       <v-card-title>
-        Approve Cash-out Request
+        Approve Referral Claim
       </v-card-title>
 
       <v-card-text>

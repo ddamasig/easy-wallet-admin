@@ -27,6 +27,10 @@
             auto-grow
           >
           </v-textarea>
+          <v-text-field type="password" label="Enter PIN" prepend-inner-icon="mdi-lock"></v-text-field>
+          <p>
+            By clicking Disapprove, you acknowledge that nunquam perdere assimilatio lorem ipsum set amet dolor.
+          </p>
         </v-form>
       </v-card-text>
 

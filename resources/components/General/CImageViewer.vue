@@ -8,7 +8,10 @@
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-card-title>
-      <v-card-subtitle>File Name: proof_of_payment.png</v-card-subtitle>
+      <v-card-subtitle>
+        File Name: proof_of_payment.png
+        <v-icon color="primary" @click="download">mdi-download</v-icon>
+      </v-card-subtitle>
       <v-card-text>
         <v-img eager max-height="600" contain :src="src"></v-img>
       </v-card-text>
@@ -24,6 +27,9 @@ export default {
   data: () => ({
     isVisible: false
   }),
+  methods: {
+    download() {}
+  },
   watch: {
     src(val) {
       this.isVisible = val !== ''

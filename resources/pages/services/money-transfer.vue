@@ -58,7 +58,7 @@ export default {
         recipient_name: 'John Doe',
         recipient_number: '+6391231231234',
         amount: 'PHP 5,000',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'MT9123JK22'
       },
@@ -67,7 +67,7 @@ export default {
         recipient_name: 'LeBron James',
         recipient_number: '+6391231231234',
         amount: 'PHP 10,000',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'MT9123JK22'
       },
@@ -76,7 +76,7 @@ export default {
         recipient_name: 'Yao Ming',
         recipient_number: '+6391231231234',
         amount: 'PHP 2,500',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'MT9123JK22'
       },
@@ -85,7 +85,7 @@ export default {
         recipient_name: 'Lorem Ipsum',
         recipient_number: '+6391231231234',
         amount: 'PHP 1,250',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'MT9123JK22'
       },
@@ -94,7 +94,7 @@ export default {
         recipient_name: 'Kemba Walker',
         recipient_number: '+6391231231234',
         amount: 'PHP 2,000',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'MT9123JK22'
       },
@@ -103,7 +103,7 @@ export default {
         recipient_name: 'Gordon Hayward',
         recipient_number: '+6391231231234',
         amount: 'PHP 3,299',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'MT9123JK22'
       },

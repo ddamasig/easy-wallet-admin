@@ -60,7 +60,7 @@ export default {
         account_number: '8729911231',
         amount_deducted_from_wallet: 'PHP 51',
         member: 'Juan Dela Cruz',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'PL9288UYX21'
       },
@@ -71,7 +71,7 @@ export default {
         account_number: '8729911231',
         amount_deducted_from_wallet: 'PHP 51',
         member: 'Juan Dela Cruz',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'PL9288UYX21'
       },
@@ -82,7 +82,7 @@ export default {
         account_number: '8729911231',
         amount_deducted_from_wallet: 'PHP 51',
         member: 'Juan Dela Cruz',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'PL9288UYX21'
       },
@@ -93,7 +93,7 @@ export default {
         account_number: '8729911231',
         amount_deducted_from_wallet: 'PHP 51',
         member: 'Juan Dela Cruz',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'PL9288UYX21'
       },
@@ -104,7 +104,7 @@ export default {
         account_number: '8729911231',
         amount_deducted_from_wallet: 'PHP 51',
         member: 'Juan Dela Cruz',
-        date: 'March 30, 2022',
+        date: '10:30 am, March 30, 2022',
         status: 'Success',
         id: 'PL9288UYX21'
       },

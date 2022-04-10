@@ -8,21 +8,19 @@
         v-bind="attrs"
         v-on="on"
         block
-        elevation="0"
-        color="primary"
+        outlined
       >
-        Approve
+        Disapprove
       </v-btn>
     </template>
 
     <v-card>
       <v-card-title>
-        Approve Cash-out Request
+        Disapprove Referral Claim
       </v-card-title>
 
       <v-card-text>
         <v-form>
-          <v-file-input prepend-icon="mdi-image" label="Images" multiple chips small-chips></v-file-input>
           <v-textarea
             v-model="model.remarks"
             label="Remarks"
@@ -31,7 +29,7 @@
           </v-textarea>
           <v-text-field type="password" label="Enter PIN" prepend-inner-icon="mdi-lock"></v-text-field>
           <p>
-            By clicking Approve, you acknowledge that nunquam perdere assimilatio lorem ipsum set amet dolor.
+            By clicking Disapprove, you acknowledge that nunquam perdere assimilatio lorem ipsum set amet dolor.
           </p>
         </v-form>
       </v-card-text>
@@ -52,7 +50,7 @@
           @click="dialog = false"
           elevation="0"
         >
-          Approve
+          Disapprove
         </v-btn>
       </v-card-actions>
     </v-card>
