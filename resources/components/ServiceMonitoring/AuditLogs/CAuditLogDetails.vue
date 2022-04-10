@@ -15,7 +15,7 @@
           <td>{{ selectedItem.description }}</td>
         </tr>
         <tr>
-          <td class="font-weight-medium">Actor</td>
+          <td class="font-weight-medium">User</td>
           <td>{{ selectedItem.actor }}</td>
         </tr>
         <tr>
@@ -26,6 +26,7 @@
               :key="index"
               small
               class="mr-1"
+              color="primary"
             >
               {{ tag }}
             </v-chip>

@@ -3,20 +3,24 @@
     v-model="dialog"
     width="500"
   >
-    <template v-slot:activator="{ on, attrs }">
-      <v-btn
-        color="primary"
-        elevation="0"
-        class="mr-2"
-        small
-        fab
-        v-bind="attrs"
-        v-on="on"
-      >
-        <v-icon>mdi-content-copy</v-icon>
-      </v-btn>
+    <template #activator="{ on: dialog }">
+      <v-tooltip bottom >
+        <template #activator="{ on: tooltip }">
+          <!--            <v-btn v-on="{ ...tooltip, ...dialog }">Button</v-btn>-->
+          <v-btn
+            color="primary"
+            elevation="0"
+            class="mr-2"
+            small
+            fab
+            v-on="{...dialog, ...tooltip}"
+          >
+            <v-icon>mdi-plus</v-icon>
+          </v-btn>
+        </template>
+        <span>Send Referral Links</span>
+      </v-tooltip>
     </template>
-
     <v-card>
       <v-card-title>
         Generate Referral Link
@@ -28,6 +32,12 @@
       <v-card-text>
         <v-form>
           <v-row>
+
+            <v-col cols="12">
+              <v-combobox multiple prepend-inner-icon="mdi-email" label="Recipients" chips deletable-chips
+                          small-chips hint="Type the email then press the TAB key." persistent-hint
+              ></v-combobox>
+            </v-col>
             <v-col cols="12" sm="6">
               <p>Service Inclusions</p>
               <v-switch
@@ -79,6 +89,7 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
+
 </template>
 
 <script>

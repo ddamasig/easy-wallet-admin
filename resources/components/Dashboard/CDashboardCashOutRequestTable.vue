@@ -11,26 +11,19 @@
         <v-list-item
           :key="index"
           class="pt-2"
+          :to="`/services/cash-out-requests?id=${item.id}`"
+          color="primary"
         >
           <v-list-item-content>
-            <v-list-item-title class="font-weight-medium">
-              {{ item.amount }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
+            <v-list-item-title>
               {{ item.member }}
-            </v-list-item-subtitle>
+            </v-list-item-title>
             <v-list-item-subtitle>
               {{ item.date }}
             </v-list-item-subtitle>
           </v-list-item-content>
-          <v-list-item-action>
-            <v-chip
-              class="text-capitalize primary lighten-5 primary--text"
-              small
-              @click="reviewWithdrawalRequest()"
-            >
-              Review
-            </v-chip>
+          <v-list-item-action class="font-weight-black title">
+            {{ item.amount }}
           </v-list-item-action>
         </v-list-item>
         <v-divider
@@ -49,70 +42,70 @@ export default {
       {
         amount: 'P 5,000',
         id: 'KK23LQD',
-        date: 'March 16, 2022',
+        date: '10:30 am, March 16, 2022',
         status: 'pending',
-        member: 'Juan Dela Cruz'
+        member: 'Harris Quedado'
       },
       {
         amount: 'P 5,000',
-        id: 'KK23LQD',
-        date: 'March 16, 2022',
+        id: 'KK23LQX',
+        date: '10:30 am, March 16, 2022',
         status: 'pending',
-        member: 'Juan Dela Cruz'
+        member: 'Dean Simon Damasig'
       },
       {
         amount: 'P 200',
         id: 'QS5LS01',
-        date: 'March 10, 2022',
+        date: '10:30 am, March 16, 2022',
+        status: 'complete',
+        member: 'John Jackson Betito'
+      },
+      {
+        amount: 'P 1,450',
+        id: 'SM0X921',
+        date: '10:30 am, March 16, 2022',
+        status: 'complete',
+        member: 'Ryan Labrador'
+      },
+      {
+        amount: 'P 5,000',
+        id: 'KK23LQD',
+        date: '10:30 am, March 16, 2022',
+        status: 'pending',
+        member: 'Max Betito'
+      },
+      {
+        amount: 'P 200',
+        id: 'QS5LS01',
+        date: '10:30 am, March 16, 2022',
         status: 'complete',
         member: 'Michael Jordan'
       },
       {
         amount: 'P 1,450',
         id: 'SM0X921',
-        date: 'March 02, 2022',
+        date: '10:30 am, March 16, 2022',
         status: 'complete',
         member: 'Kobe Bryant'
       },
       {
         amount: 'P 5,000',
         id: 'KK23LQD',
-        date: 'March 16, 2022',
+        date: '10:30 am, March 16, 2022',
         status: 'pending',
         member: 'Juan Dela Cruz'
       },
       {
         amount: 'P 200',
         id: 'QS5LS01',
-        date: 'March 10, 2022',
+        date: '10:30 am, March 16, 2022',
         status: 'complete',
         member: 'Michael Jordan'
       },
       {
         amount: 'P 1,450',
         id: 'SM0X921',
-        date: 'March 02, 2022',
-        status: 'complete',
-        member: 'Kobe Bryant'
-      },
-      {
-        amount: 'P 5,000',
-        id: 'KK23LQD',
-        date: 'March 16, 2022',
-        status: 'pending',
-        member: 'Juan Dela Cruz'
-      },
-      {
-        amount: 'P 200',
-        id: 'QS5LS01',
-        date: 'March 10, 2022',
-        status: 'complete',
-        member: 'Michael Jordan'
-      },
-      {
-        amount: 'P 1,450',
-        id: 'SM0X921',
-        date: 'March 02, 2022',
+        date: '10:30 am, March 16, 2022',
         status: 'complete',
         member: 'Kobe Bryant'
       },

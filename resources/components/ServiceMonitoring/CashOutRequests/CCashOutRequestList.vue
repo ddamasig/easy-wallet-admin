@@ -91,6 +91,14 @@ export default {
     }
   },
   created() {
+    const queryId = this.$route.query.id
+    if (queryId) {
+      this.selectedItem = this.items.find(i => i.id === queryId)
+
+      if (this.selectedItem === undefined) {
+        this.selectedItem = {}
+      }
+    }
   },
   methods: {
   }

@@ -7,22 +7,10 @@
       class="px-3 pb-12"
       dense
     >
-      <v-col
-        cols="12"
-        sm="4"
-      >
-        <c-referral-settings-panel>
-        </c-referral-settings-panel>
-      </v-col>
-      <v-col
-        cols="12"
-        sm="4"
-      >
-        <c-membership-settings-panel
-          class="mb-4"
-        ></c-membership-settings-panel>
-        <c-service-inclusions-panel
-        ></c-service-inclusions-panel>
+      <v-col cols="6">
+        <c-referral-settings-panel class="mb-4"></c-referral-settings-panel>
+        <c-membership-settings-panel class="mb-4"></c-membership-settings-panel>
+        <c-service-inclusions-panel class="mb-4"></c-service-inclusions-panel>
       </v-col>
     </v-row>
   </div>

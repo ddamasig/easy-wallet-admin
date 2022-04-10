@@ -6,18 +6,18 @@
     ></c-simple-app-bar>
     <v-row
       justify="center"
-      align="center"
+      align="start"
       dense
     >
       <v-col
         cols="12"
-        sm="6"
+        sm="5"
       >
 
         <v-card
           flat
           rounded
-          class="pa-3 mt-4"
+          class="pa-3"
         >
           <v-card-title>
             Basic Details
@@ -46,35 +46,17 @@
                 <td>{{ member.date_joined }}</td>
               </tr>
               <tr>
+                <td class="font-weight-medium">Address</td>
+                <td>{{ member.address }}</td>
+              </tr>
+              <tr>
                 <td class="font-weight-medium">Birthdate</td>
                 <td>{{ member.birthdate }}</td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium">Current Balance</td>
-                <td>{{ member.current_balance }}</td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium">Number of Confirmed Referrals</td>
-                <td>{{ member.number_of_confirmed_referrals }}</td>
               </tr>
               </tbody>
             </v-simple-table>
           </v-card-text>
         </v-card>
-      </v-col>
-
-    </v-row>
-
-    <v-row
-      justify="center"
-      align="center"
-      class="pb-6"
-      dense
-    >
-      <v-col
-        cols="12"
-        sm="6"
-      >
 
         <v-card
           flat
@@ -87,71 +69,110 @@
           <v-card-text>
             <v-row>
               <v-col cols="12">
-                <p>
-                  Replace the member's email address and send a reset password link.
-                </p>
-                <v-btn
-                  color="error"
-                  elevation="0"
-                  outlined
-                >
-                  Reset Credentials
-                </v-btn>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12">
-                <p>
-                  Send a link to the member's email address which will allow
-                  the member to reset his/her password.
-                </p>
-                <v-btn
-                  color="error"
-                  elevation="0"
-                  outlined
-                >
-                  Reset Password
-                </v-btn>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12">
-                <p>
-                  This prevents the member from logging into the system and
-                  performing any form of transaction.
-                </p>
-                <v-btn
-                  color="error"
-                  elevation="0"
-                  outlined
-                >
-                  Disable Account
-                </v-btn>
+                <v-list nav>
+                  <v-list-item-group color="primary">
+                    <template v-for="(item,index) in settings">
+                      <v-list-item to="/" :key="index">
+                        <v-list-item-avatar>
+                          <v-icon>{{ item.icon }}</v-icon>
+                        </v-list-item-avatar>
+                        <v-list-item-content>
+                          <v-list-item-title>{{ item.name }}</v-list-item-title>
+                          <v-list-item-subtitle>{{ item.description }}</v-list-item-subtitle>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </template>
+
+                  </v-list-item-group>
+
+                </v-list>
+
               </v-col>
             </v-row>
           </v-card-text>
         </v-card>
       </v-col>
 
+      <v-col
+        cols="12"
+        sm="3"
+      >
+        <c-user-logs
+          :items="logs"
+        ></c-user-logs>
+      </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
+import CUserLogs from "@/components/Profile/CUserLogs";
+
 export default {
   name: 'MemberView',
+  components: {CUserLogs},
   layout: 'home',
   data: () => ({
+    settings: [
+      {
+        name: 'Reset Credentials',
+        description: 'Send a reset link to the member\'s new email address.',
+        icon: 'mdi-email'
+      },
+      {
+        name: 'Reset Password',
+        description: 'Send a link to the member\'s email address which will allow the member to reset his/her password.',
+        icon: 'mdi-lock'
+      },
+      {
+        name: 'Disable Account',
+        description: 'This prevents the member from logging into the system and performing any form of transaction.',
+        icon: 'mdi-account-cancel'
+      },
+    ],
     member: {
       identity_key: 'RX2LS900',
       name: 'Juan Dela Cruz',
+      address: 'Penafrancia St, Naga City, Camarines Sur',
       email: 'jdelacruz@example.net',
       mobile_number: '+6391231231234',
       date_joined: 'January 3, 2022',
       birthdate: 'August 17, 1996',
       current_balance: 'PHP 2,542',
       number_of_confirmed_referrals: 4
-    }
+    },
+    logs: [
+      {
+        category: 'Approved Cash-In Request',
+        date: 'March 31, 2022',
+        id: 'LWU123010',
+      },
+      {
+        category: 'Approved Cash-Out Request',
+        date: 'March 31, 2022',
+        id: 'LWU123010',
+      },
+      {
+        category: 'Login',
+        date: 'March 31, 2022',
+        id: 'LWU123010',
+      },
+      {
+        category: 'Logout',
+        date: 'March 31, 2022',
+        id: 'LWU123010',
+      },
+      {
+        category: 'Approved Cash-Out Request',
+        date: 'March 31, 2022',
+        id: 'LWU123010',
+      },
+      {
+        category: 'Pay Bills',
+        date: 'March 31, 2022',
+        id: 'LWU123010',
+      },
+    ]
   })
 }
 </script>

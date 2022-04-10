@@ -2,41 +2,31 @@
   <v-card
     class="p-4"
     flat
-    rounded
   >
     <v-card-title class="pa-6">
-      <v-row dense>
+      <v-row>
         <v-col cols="12">
           <p>Filters</p>
         </v-col>
-        <v-col cols="12" sm="4">
+        <v-col cols="12" sm="6">
           <v-text-field
-            placeholder="Type keywords here"
+            label="Type keywords here"
             prepend-inner-icon="mdi-magnify"
             hide-details
-            dense
-            filled
-            rounded
           ></v-text-field>
         </v-col>
-        <v-col cols="12" sm="4">
+        <v-col cols="12" sm="3">
           <v-text-field
-            placeholder="Type keywords here"
+            label="Occurrence Date From"
             type="date"
-            dense
-            filled
             hide-details
-            rounded
           ></v-text-field>
         </v-col>
-        <v-col cols="12" sm="4">
+        <v-col cols="12" sm="3">
           <v-text-field
-            placeholder="Type keywords here"
+            label="Occurrence Date Until"
             type="date"
             hide-details
-            dense
-            filled
-            rounded
           ></v-text-field>
         </v-col>
 
@@ -47,9 +37,7 @@
             item-color="primary"
             deletable-chips
             color="primary"
-            filled
-            rounded
-            dense
+            label="Tags"
             multiple
             chips
             small-chips
@@ -58,7 +46,7 @@
         </v-col>
       </v-row>
 
-      <v-row dense>
+      <v-row>
         <v-col sm="4">
           <v-btn
             color="primary"
@@ -149,7 +137,7 @@ export default {
         sortable: false,
         value: 'description',
       },
-      {text: 'Actor', value: 'actor'},
+      {text: 'User', value: 'user'},
       {text: 'Tags', value: 'tags'},
       {text: 'Date', value: 'date'},
     ],
@@ -172,8 +160,6 @@ export default {
 
   watch: {
     selectedItem(val) {
-      console.log('Val:')
-      console.log(val[0])
       this.$emit('select-item', val[0])
     }
   },

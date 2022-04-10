@@ -29,20 +29,33 @@
               >
                 <c-generate-referral-link-modal
                 ></c-generate-referral-link-modal>
-                <v-btn
-                  color="primary"
-                  elevation="0"
-                  icon
-                >
-                  <v-icon>mdi-printer</v-icon>
-                </v-btn>
-                <v-btn
-                  color="primary"
-                  elevation="0"
-                  icon
-                >
-                  <v-icon>mdi-file-excel</v-icon>
-                </v-btn>
+                <v-tooltip bottom>
+                  <template #activator="{ on: tooltip }">
+                    <v-btn
+                      color="primary"
+                      elevation="0"
+                      icon
+                      v-on="{...tooltip}"
+                    >
+                      <v-icon>mdi-printer</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Print Results</span>
+                </v-tooltip>
+
+                <v-tooltip bottom>
+                  <template #activator="{ on: tooltip }">
+                    <v-btn
+                      color="primary"
+                      elevation="0"
+                      icon
+                      v-on="{...tooltip}"
+                    >
+                      <v-icon>mdi-file-excel</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Export to Excel</span>
+                </v-tooltip>
               </v-col>
               <v-spacer></v-spacer>
               <v-col

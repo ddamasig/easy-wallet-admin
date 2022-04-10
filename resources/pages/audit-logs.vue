@@ -52,45 +52,45 @@ export default {
     items: [
       {
         description: 'Mensas sunt tumultumques de flavum vortex.',
-        actor: 'Juan Dela Cruz',
+        user: 'Harris Quedado',
         tags: ['Auth', 'Member'],
-        date: 'March 31, 2022',
+        date: '10:30 pm, March 31, 2022',
         additional_info: '{"attribute": "value"}',
         id: 1
       },
       {
         description: 'Mensas sunt tumultumques de flavum vortex.',
-        actor: 'LeBron James',
+        user: 'Dean Simon Damasig',
         tags: ['Auth', 'Admin'],
-        date: 'March 31, 2022',
+        date: '10:30 pm, March 31, 2022',
         id: 2
       },
       {
         description: 'Mensas sunt tumultumques de flavum vortex.',
-        actor: 'Juan Dela Cruz',
+        user: 'Ryan Labrador',
         tags: ['Auth', 'Member'],
-        date: 'March 31, 2022',
+        date: '10:30 pm, March 31, 2022',
         id: 3
       },
       {
         description: 'Mensas sunt tumultumques de flavum vortex.',
-        actor: 'Juan Dela Cruz',
+        user: 'John Jackson Betito',
         tags: ['Auth', 'Member'],
-        date: 'March 31, 2022',
+        date: '10:30 pm, March 31, 2022',
         id: 4
       },
       {
         description: 'Mensas sunt tumultumques de flavum vortex.',
-        actor: 'Juan Dela Cruz',
+        user: 'Max Betito',
         tags: ['Auth', 'Member'],
-        date: 'March 31, 2022',
+        date: '10:30 pm, March 31, 2022',
         id: 5
       },
       {
         description: 'Mensas sunt tumultumques de flavum vortex.',
-        actor: 'Juan Dela Cruz',
+        user: 'John Jackson Betito',
         tags: ['Auth', 'Member'],
-        date: 'March 31, 2022',
+        date: '10:30 pm, March 31, 2022',
         id: 6
       },
     ]

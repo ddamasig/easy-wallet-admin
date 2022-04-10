@@ -47,19 +47,19 @@ export default {
           y: 61.41,
           sliced: true,
           selected: true,
-          color: '#f55258'
+          color: '#4fbac7'
         }, {
           name: 'E-Loading',
           y: 11.84,
-          color: '#4CAF50'
+          color: '#f55258'
         }, {
           name: 'Pay Bills',
           y: 10.85,
-          color: '#FF9800'
+          color: '#4CAF50'
         }, {
           name: 'Money Transfer',
           y: 4.67,
-          color: '#4fbac7'
+          color: '#FF9800'
         }]
       }]
     }

@@ -10,22 +10,33 @@
     </v-card-subtitle>
     <v-card-text>
       <v-row dense class="mb-0 pb-0">
-        <v-col cols="12" class="mb-0 pb-0">
-          <p class="mb-0 pb-0">Generated referral links will expire after a certain amount of time.</p>
-        </v-col>
-        <v-col cols="12" sm="4" class="mb-0 pb-0">
-          <v-text-field
-            label="Validity Duration"
-            type="number"
-            prepend-icon="mdi-timer-sand-complete"
-            v-model="model.expiration"
-          ></v-text-field>
-        </v-col>
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-icon>mdi-timer-sand-complete</v-icon>
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title>Referral Link Validity Duration</v-list-item-title>
+            <v-list-item-subtitle>
+              Generated referral links will expire after a certain amount of time.
+            </v-list-item-subtitle>
+          </v-list-item-content>
+          <v-list-item-action>
+            <v-spacer></v-spacer>
+            <v-col cols="7">
+              <v-text-field v-model="model.expiration" outlined dense type="number" hide-details class="my-auto"
+                            suffix="hours">
+              </v-text-field>
+            </v-col>
+          </v-list-item-action>
+        </v-list-item>
       </v-row>
+
+      <v-divider class="my-6"></v-divider>
 
       <v-row dense>
         <v-col cols="12">
-          <p class="my-0 py-0">Require the following attachments during registration.</p>
+          <h2 class="font-weight-medium">Requirements</h2>
+          <p class="my-0 py-0">Ask potential members to upload the following attachments during registration.</p>
         </v-col>
         <v-col cols="12">
           <v-list @click.prevent>
@@ -37,6 +48,9 @@
                   :key="index"
                   color="primary"
                 >
+                  <v-list-item-avatar>
+                    <v-icon>{{ req.icon }}</v-icon>
+                  </v-list-item-avatar>
                   <v-list-item-content>
                     <v-list-item-title>{{ req.name }}</v-list-item-title>
                     <v-list-item-subtitle>{{ req.file_type }}</v-list-item-subtitle>
@@ -114,16 +128,19 @@ export default {
           name: 'Selfie Photo',
           description: 'Please upload a selfie. Make sure to take the photo in a well lit area.',
           file_type: 'Image',
+          icon: 'mdi-image',
         },
         {
           name: 'ID Picture',
           description: 'Please upload a primary ID with your face on it. (e.g. Driver\'s License, Passport, SSS UMID, etc.)',
           file_type: 'Document/Image',
+          icon: 'mdi-image',
         },
         {
           name: 'Proof of Payment',
           description: 'Please upload an image or document such as a GCASH receipt which will serve as a proof of payment.',
           file_type: 'Document/Image',
+          icon: 'mdi-image',
         }
       ]
     },

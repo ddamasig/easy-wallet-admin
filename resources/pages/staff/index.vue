@@ -100,50 +100,50 @@ export default {
       ],
       users: [
         {
-          name: 'Juan Dela Cruz',
-          email: 'jdelacruz@example.net',
+          name: 'Harris Quedado',
+          email: 'hoqedado@example.net',
           current_balance: 'PHP 7,200',
           last_activity: 'March 24, 2022',
           last_login: 'March 24, 2022',
         },
         {
-          name: 'Juan Dela Cruz',
-          email: 'jdelacruz@example.net',
+          name: 'Dean Simon Damasig',
+          email: 'dean@example.net',
           current_balance: 'PHP 7,200',
           last_activity: 'March 24, 2022',
           last_login: 'March 24, 2022',
         },
         {
-          name: 'Juan Dela Cruz',
-          email: 'jdelacruz@example.net',
+          name: 'Ryan Labrador',
+          email: 'ryan@example.net',
           current_balance: 'PHP 7,200',
           last_activity: 'March 24, 2022',
           last_login: 'March 24, 2022',
         },
         {
-          name: 'Juan Dela Cruz',
-          email: 'jdelacruz@example.net',
+          name: 'John Jackson Betito',
+          email: 'johhjackson@example.net',
           current_balance: 'PHP 7,200',
           last_activity: 'March 24, 2022',
           last_login: 'March 24, 2022',
         },
         {
-          name: 'Juan Dela Cruz',
-          email: 'jdelacruz@example.net',
+          name: 'Max Betito',
+          email: 'max@example.net',
           current_balance: 'PHP 7,200',
           last_activity: 'March 24, 2022',
           last_login: 'March 24, 2022',
         },
         {
-          name: 'Juan Dela Cruz',
-          email: 'jdelacruz@example.net',
+          name: 'Karl Limlengco',
+          email: 'karl@example.net',
           current_balance: 'PHP 7,200',
           last_activity: 'March 24, 2022',
           last_login: 'March 24, 2022',
         },
         {
-          name: 'Juan Dela Cruz',
-          email: 'jdelacruz@example.net',
+          name: 'Ardee Poblete',
+          email: 'coo@example.net',
           current_balance: 'PHP 7,200',
           last_activity: 'March 24, 2022',
           last_login: 'March 24, 2022',
@@ -154,7 +154,7 @@ export default {
 
   methods: {
     viewUserPofile(user) {
-      this.$router.push(`/members/${user.email}`)
+      this.$router.push(`/staff/${user.email}`)
     }
   }
 }

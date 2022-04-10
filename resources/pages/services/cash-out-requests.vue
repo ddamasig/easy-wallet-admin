@@ -60,12 +60,12 @@ export default {
     selectedItem: {},
     items: [
       {
-        member: 'Juan Dela Cruz',
+        member: 'Harris Quedado',
         remarks: 'Byssuss congregabo in ferox burdigala!',
         amount: 'PHP 5,000',
         date: 'March 30, 2022',
         status: 'Awaiting Funds',
-        id: 'MT9123JK22',
+        id: 'KK23LQD',
         images: [
           'https://placekitten.com/640/360',
           'https://placekitten.com/640/361',
@@ -73,12 +73,12 @@ export default {
         ]
       },
       {
-        member: 'Juan Dela Cruz',
+        member: 'Dean Simon Damasig',
         remarks: 'Byssuss congregabo in ferox burdigala!',
-        amount: 'PHP 2,500',
+        amount: 'PHP 5,000',
         date: 'March 30, 2022',
         status: 'Awaiting Funds',
-        id: 'MT9123JK22',
+        id: 'KK23LQX',
         images: [
           'https://placekitten.com/640/310',
           'https://placekitten.com/640/342',

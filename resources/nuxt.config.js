@@ -16,7 +16,8 @@ export default {
 
   // Serve to private IP for LAN access
   server: {
-    host: '127.0.0.1'
+    host: '127.0.0.1',
+    port: 3001
   },
 
 
