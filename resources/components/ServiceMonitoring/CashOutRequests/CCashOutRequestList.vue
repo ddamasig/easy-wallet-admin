@@ -16,6 +16,16 @@
       <v-btn icon color="primary">
         <v-icon>mdi-file-excel</v-icon>
       </v-btn>
+      <v-row class="mt-2" dense>
+        <v-col cols="12">
+          <v-tabs grow show-arrows align-with-title>
+            <v-tab v-for="(item,index) in filters" :key="index" class="mr-1">
+              {{ item.name }} - {{ item.count }}
+            </v-tab>
+          </v-tabs>
+        </v-col>
+      </v-row>
+
     </v-card-title>
     <v-card-text
       class="overflow-auto px-0"
@@ -83,11 +93,28 @@ export default {
     items: Array
   },
   data: () => ({
-    selectedItem: {}
+    selectedItem: {},
+    filter: null,
+    filters: [
+      {
+        name: 'Pending',
+        count: '10'
+      },
+      {
+        name: 'Approved',
+        count: '36'
+      },
+      {
+        name: 'Disapproved',
+        count: '5'
+      },
+    ]
   }),
   watch: {
     selectedItem(val) {
-      this.$emit('select-item', val)
+      if (val) {
+        this.$emit('select-item', val)
+      }
     }
   },
   created() {
@@ -100,7 +127,6 @@ export default {
       }
     }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>

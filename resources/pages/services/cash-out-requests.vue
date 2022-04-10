@@ -9,8 +9,8 @@
     >
       <v-col
         cols="12"
-        sm="5"
-        md="3"
+        sm="6"
+        md="4"
         :class="listClass"
       >
         <c-cash-out-request-list
@@ -64,7 +64,7 @@ export default {
         remarks: 'Byssuss congregabo in ferox burdigala!',
         amount: 'PHP 5,000',
         date: 'March 30, 2022',
-        status: 'Awaiting Funds',
+        status: 'Pending',
         id: 'KK23LQD',
         images: [
           'https://placekitten.com/640/360',
@@ -77,7 +77,7 @@ export default {
         remarks: 'Byssuss congregabo in ferox burdigala!',
         amount: 'PHP 5,000',
         date: 'March 30, 2022',
-        status: 'Awaiting Funds',
+        status: 'Pending',
         id: 'KK23LQX',
         images: [
           'https://placekitten.com/640/310',
@@ -85,11 +85,11 @@ export default {
         ]
       },
       {
-        member: 'Juan Dela Cruz',
+        member: 'Ryan Labrador',
         remarks: 'Byssuss congregabo in ferox burdigala!',
         amount: 'PHP 4,700',
         date: 'March 30, 2022',
-        status: 'Awaiting Funds',
+        status: 'Pending',
         id: 'MT9123JK22',
         images: [
           'https://placekitten.com/640/360',
@@ -98,11 +98,11 @@ export default {
         ]
       },
       {
-        member: 'Juan Dela Cruz',
+        member: 'John Jackson Betito',
         remarks: 'Byssuss congregabo in ferox burdigala!',
         amount: 'PHP 1,250',
         date: 'March 30, 2022',
-        status: 'Awaiting Funds',
+        status: 'Pending',
         id: 'MT9123JK22',
         images: [
           'https://placekitten.com/640/360',
@@ -111,11 +111,11 @@ export default {
         ]
       },
       {
-        member: 'Juan Dela Cruz',
+        member: 'Max Betito',
         remarks: 'Byssuss congregabo in ferox burdigala!',
         amount: 'PHP 3,250',
         date: 'March 30, 2022',
-        status: 'Awaiting Funds',
+        status: 'Pending',
         id: 'MT9123JK22',
         images: [
           'https://placekitten.com/640/360',
@@ -124,11 +124,11 @@ export default {
         ]
       },
       {
-        member: 'John Doe',
+        member: 'John Jackson Betito',
         remarks: 'Byssuss congregabo in ferox burdigala!',
         amount: 'PHP 2,500',
         date: 'March 30, 2022',
-        status: 'Awaiting Funds',
+        status: 'Pending',
         id: 'MT9123JK22',
         images: [
           'https://placekitten.com/640/360',
