@@ -6,7 +6,6 @@
     <template #activator="{ on: dialog }">
       <v-tooltip bottom >
         <template #activator="{ on: tooltip }">
-          <!--            <v-btn v-on="{ ...tooltip, ...dialog }">Button</v-btn>-->
           <v-btn
             color="primary"
             elevation="0"

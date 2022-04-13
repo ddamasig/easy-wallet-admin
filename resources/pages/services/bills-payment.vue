@@ -9,8 +9,8 @@
     >
       <v-col
         cols="12"
-        sm="5"
-        md="3"
+        sm="6"
+        md="4"
         :class="listClass"
       >
         <c-bills-payment-list

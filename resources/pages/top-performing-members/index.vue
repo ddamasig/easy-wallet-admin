@@ -97,7 +97,11 @@
             :headers="headers"
             :items="users"
             :search="search"
-          ></v-data-table>
+          >
+            <template #[`item.cash_in_amount`]="{item}">
+              <span class="text-mono">{{ item.cash_in_amount }}</span>
+            </template>
+          </v-data-table>
         </v-card>
       </v-col>
 

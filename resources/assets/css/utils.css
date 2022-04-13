@@ -1,7 +1,3 @@
-body {
-  font-family: Quicksand !important;
-}
-
 .flip {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);

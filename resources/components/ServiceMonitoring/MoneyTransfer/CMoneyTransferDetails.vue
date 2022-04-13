@@ -24,11 +24,11 @@
         </tr>
         <tr>
           <td class="font-weight-medium">Recipient Number</td>
-          <td>{{ selectedItem.recipient_number }}</td>
+          <td class="text-mono">{{ selectedItem.recipient_number }}</td>
         </tr>
         <tr>
-          <td class="font-weight-medium">Amout</td>
-          <td>{{ selectedItem.amount }}</td>
+          <td class="font-weight-medium">Amount</td>
+          <td class="text-mono">{{ selectedItem.amount }}</td>
         </tr>
         <tr>
           <td class="font-weight-medium">Date</td>

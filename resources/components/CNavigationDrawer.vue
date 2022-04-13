@@ -118,6 +118,7 @@ export default {
       configuration: [
         {title: 'Audit Logs', icon: 'mdi-history', to: '/audit-logs'},
         {title: 'Profile', icon: 'mdi-account', to: '/profile'},
+        {title: 'Email Reset Requests', icon: 'mdi-email-sync', to: '/email-reset-requests'},
         {title: 'Referral Settings', icon: 'mdi-tools', to: '/referral-settings'},
       ],
       right: null,

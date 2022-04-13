@@ -109,6 +109,9 @@
                 {{ item.name }}
               </span>
             </template>
+            <template #[`item.current_balance`]="{item}">
+              <span class="text-mono">{{ item.current_balance }}</span>
+            </template>
           </v-data-table>
         </v-card>
       </v-col>

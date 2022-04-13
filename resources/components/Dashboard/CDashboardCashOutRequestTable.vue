@@ -22,7 +22,7 @@
               {{ item.date }}
             </v-list-item-subtitle>
           </v-list-item-content>
-          <v-list-item-action class="font-weight-black title">
+          <v-list-item-action class="font-weight-bold text-mono">
             {{ item.amount }}
           </v-list-item-action>
         </v-list-item>
@@ -126,3 +126,6 @@ export default {
   }
 }
 </script>
+
+<style>
+</style>
