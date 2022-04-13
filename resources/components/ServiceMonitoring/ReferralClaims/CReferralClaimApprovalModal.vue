@@ -22,7 +22,6 @@
 
       <v-card-text>
         <v-form>
-          <v-file-input prepend-icon="mdi-image" label="Images" multiple chips small-chips></v-file-input>
           <v-textarea
             v-model="model.remarks"
             label="Remarks"

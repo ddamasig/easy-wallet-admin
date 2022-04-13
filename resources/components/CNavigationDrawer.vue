@@ -1,23 +1,8 @@
 <template>
   <v-navigation-drawer app fixed v-model="navigationDrawer">
-    <v-list-item color="primary">
-      <v-list-item-content>
-        <v-list-item-title class="text-h6 font-weight-black">
-          <h3 class="primary--text">
-            ID#00041234
-          </h3>
-        </v-list-item-title>
-        <v-list-item-subtitle>
-          Juan Dela Cruz
-        </v-list-item-subtitle>
-      </v-list-item-content>
-      <v-list-item-avatar>
-        <v-img src="/logos/ewallet.png"></v-img>
-      </v-list-item-avatar>
-    </v-list-item>
-
-    <v-divider></v-divider>
-
+    <p class="pa-3 pb-0 font-weight-medium">
+      Analytics
+    </p>
     <v-list
       dense
       nav

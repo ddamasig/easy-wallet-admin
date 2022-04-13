@@ -36,22 +36,22 @@
               <td class="font-weight-medium">Status</td>
               <td :class="getStatusColor()">{{ selectedItem.status }}</td>
             </tr>
-            <tr>
-              <td class="font-weight-medium">Commission Claimed</td>
-              <td class="error--text">Not Yet</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">Approved/Disapproved At</td>
-              <td>N/A</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">Approved/Disapproved By</td>
-              <td>N/A</td>
-            </tr>
+<!--            <tr>-->
+<!--              <td class="font-weight-medium">Commission Claimed</td>-->
+<!--              <td class="error&#45;&#45;text">Not Yet</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td class="font-weight-medium">Approved/Disapproved At</td>-->
+<!--              <td>N/A</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td class="font-weight-medium">Approved/Disapproved By</td>-->
+<!--              <td>N/A</td>-->
+<!--            </tr>-->
             </tbody>
           </v-simple-table>
         </v-col>
-        <v-col cols="12" class="pt-12">
+        <v-col cols="12" class="pt-6">
           <span class="font-weight-black">
             Images
           </span>

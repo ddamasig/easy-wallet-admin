@@ -43,7 +43,7 @@
             >
               <v-list-item-content>
                 <v-list-item-title
-                  class="font-weight-black"
+                  class="font-weight-black text-mono"
                   style="font-size: 1rem"
                 >
                   {{ item.amount }}
@@ -52,13 +52,7 @@
                 <v-list-item-subtitle>{{ item.member }}</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action class="mt-4">
-                <v-chip
-                  class="text-capitalize"
-                  color="primary"
-                  small
-                >
-                  {{ item.id }}
-                </v-chip>
+                <small class="text-mono">{{ item.id }}</small>
               </v-list-item-action>
             </v-list-item>
 

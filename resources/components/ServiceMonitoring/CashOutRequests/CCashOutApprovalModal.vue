@@ -22,7 +22,17 @@
 
       <v-card-text>
         <v-form>
-          <v-file-input prepend-icon="mdi-image" label="Images" multiple chips small-chips></v-file-input>
+          <v-row v-if="model.images.length > 0" class="my-2">
+            <v-col cols="2" v-for="(_,index) in model.images" :key="index">
+              <v-avatar tile size="64" rounded>
+                <v-img :src="`https://i.pravatar.cc/${128 + index}`"></v-img>
+              </v-avatar>
+            </v-col>
+          </v-row>
+
+          <v-file-input v-model="model.images" prepend-icon="" prepend-inner-icon="mdi-image" label="Images" multiple
+                        chips small-chips></v-file-input>
+
           <v-textarea
             v-model="model.remarks"
             label="Remarks"
@@ -64,7 +74,8 @@ export default {
   data: () => ({
     dialog: false,
     model: {
-      remarks: null
+      remarks: null,
+      images: []
     }
   })
 }

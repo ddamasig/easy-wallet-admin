@@ -10,4 +10,5 @@
 
 .text-mono {
   font-family: 'Source Code Pro', monospace !important;
+  font-size: 1rem;
 }

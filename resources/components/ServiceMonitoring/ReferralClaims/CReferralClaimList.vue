@@ -28,9 +28,11 @@
                     <v-list-item-title>{{ item.name }}</v-list-item-title>
                   </v-list-item-content>
                   <v-list-item-action>
-                    <v-avatar color="primary" size="32">
-                      <span class="white--text">{{ item.count }}</span>
-                    </v-avatar>
+
+                    <small class="text-mono font-weight-medium">
+                      {{ item.count }}
+                    </small>
+
                   </v-list-item-action>
                 </v-list-item>
 

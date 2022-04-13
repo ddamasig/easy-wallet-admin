@@ -27,11 +27,11 @@
             </tr>
             <tr>
               <td class="font-weight-medium">Number</td>
-              <td>{{ selectedItem.number }}</td>
+              <td class="text-mono">{{ selectedItem.number }}</td>
             </tr>
             <tr>
               <td class="font-weight-medium">Amount</td>
-              <td>{{ selectedItem.amount }}</td>
+              <td class="text-mono">{{ selectedItem.amount }}</td>
             </tr>
             <tr>
               <td class="font-weight-medium">Date</td>
@@ -45,14 +45,14 @@
               <td class="font-weight-medium">Status</td>
               <td :class="getStatusColor()">{{ selectedItem.status }}</td>
             </tr>
-            <tr>
-              <td class="font-weight-medium">Approved/Disapproved At</td>
-              <td>N/A</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">Approved/Disapproved By</td>
-              <td>N/A</td>
-            </tr>
+            <!--            <tr>-->
+            <!--              <td class="font-weight-medium">Approved/Disapproved At</td>-->
+            <!--              <td>N/A</td>-->
+            <!--            </tr>-->
+            <!--            <tr>-->
+            <!--              <td class="font-weight-medium">Approved/Disapproved By</td>-->
+            <!--              <td>N/A</td>-->
+            <!--            </tr>-->
             </tbody>
           </v-simple-table>
         </v-col>
