@@ -11,8 +11,12 @@
         <td>{{ selectedItem.member }}</td>
       </tr>
       <tr>
-        <td class="font-weight-medium">Recipient Name</td>
-        <td>{{ selectedItem.recipient_name }}</td>
+        <td class="font-weight-medium">Transfer Method</td>
+        <td>{{ selectedItem.method }}</td>
+      </tr>
+      <tr>
+        <td class="font-weight-medium">Recipient Number</td>
+        <td class="text-mono">{{ selectedItem.recipient_number }}</td>
       </tr>
       <tr>
         <td class="font-weight-medium">Recipient Number</td>

@@ -98,6 +98,7 @@ export default {
         date: '10:30 am, March 30, 2022',
         status: 'Success',
         avatar: 'https://picsum.photos/32',
+        method: 'GCASH',
         id: 1
       },
       {
@@ -107,6 +108,7 @@ export default {
         amount: 'PHP 10,000',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/33',
         id: 2
       },
@@ -117,6 +119,7 @@ export default {
         amount: 'PHP 2,500',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/34',
         id: 3
       },
@@ -127,6 +130,7 @@ export default {
         amount: 'PHP 15,000',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/35',
         id: 4
       },
@@ -137,6 +141,7 @@ export default {
         amount: 'PHP 2,000',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/36',
         id: 5
       },
@@ -147,6 +152,7 @@ export default {
         amount: 'PHP 3,299',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/37',
         id: 6
       },
@@ -157,6 +163,7 @@ export default {
         amount: 'PHP 5,000',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/38',
         id: 7
       },
@@ -167,6 +174,7 @@ export default {
         amount: 'PHP 10,000',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/39',
         id: 8
       },
@@ -177,6 +185,7 @@ export default {
         amount: 'PHP 2,500',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/40',
         id: 9
       },
@@ -187,6 +196,7 @@ export default {
         amount: 'PHP 15,000',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/41',
         id: 10
       },
@@ -197,6 +207,7 @@ export default {
         amount: 'PHP 2,000',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/42',
         id: 11
       },
@@ -207,6 +218,7 @@ export default {
         amount: 'PHP 3,299',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        method: 'GCASH',
         avatar: 'https://picsum.photos/43',
         id: 12
       },
