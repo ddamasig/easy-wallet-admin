@@ -51,13 +51,19 @@
         </v-chip>
       </v-chip-group>
     </template>
-    <template v-slot:[`item.member`]="{ item }">
+    <template #[`item.member`]="{ item }">
       <v-avatar size="32" :id="`item-${item.id}`" class="mr-1">
         <v-img :src="item.avatar"></v-img>
       </v-avatar>
       <span>{{ item.member }}</span>
     </template>
-    <template v-slot:[`item.status`]="{ item }">
+    <template #[`item.recipient_number`]="{ item }">
+      <span class="text-mono">{{ item.recipient_number }}</span>
+    </template>
+    <template #[`item.amount`]="{ item }">
+      <span class="text-mono">{{ item.amount }}</span>
+    </template>
+    <template #[`item.status`]="{ item }">
       <span class="success--text">
         {{ item.status }}
       </span>

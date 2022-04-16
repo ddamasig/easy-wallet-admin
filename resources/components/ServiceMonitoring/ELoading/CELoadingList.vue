@@ -51,6 +51,9 @@
         </v-chip>
       </v-chip-group>
     </template>
+    <template #[`item.customer_number`]="{ item }">
+      <span class="text-mono">{{ item.customer_number }}</span>
+    </template>
     <template v-slot:[`item.member`]="{ item }">
       <v-avatar size="32" :id="`item-${item.id}`" class="mr-1">
         <v-img :src="item.avatar"></v-img>
