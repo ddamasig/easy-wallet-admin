@@ -79,12 +79,9 @@ export default {
       dark: false,
       themes: {
         light: {
-          // primary: '#35a3fa',
           primary: '#f55258',
-          // background: '#eff7ff',
           background: '#f7e5e6',
           blue: '#35a3fa',
-          // orange: '#f76a6e',
           teal: '#4fbac7',
         },
         dark: {

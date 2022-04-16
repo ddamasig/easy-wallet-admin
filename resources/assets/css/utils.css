@@ -6,3 +6,11 @@
 .v-text-field__prefix {
   padding-right: .5em !important;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+.primary--bg {
+  background-color: rgba(254, 235, 235) !important;
+}

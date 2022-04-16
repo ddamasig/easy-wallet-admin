@@ -1,7 +1,8 @@
 <template>
   <v-app-bar
     app
-    elevate-on-scroll
+    dense
+    color="white"
   >
     <v-app-bar-nav-icon
       @click="toggleNavigationBar"
@@ -26,7 +27,6 @@
 export default {
   methods: {
     toggleNavigationBar() {
-
       this.$root.$emit('toggle-navigation-drawer')
     }
   }

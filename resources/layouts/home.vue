@@ -21,8 +21,8 @@ export default {
 <style>
   #app {
     /*background-color: #eff7ff;*/
-    /*background-color: rgba(247,106,110, 0.04)*/
-    background-color: #f9f9f9;
+    /*background-color: rgba(247,106,110, 0.04);*/
+    /*background-color: white;*/
     font-family: 'Quicksand' !important;
   }
 </style>
