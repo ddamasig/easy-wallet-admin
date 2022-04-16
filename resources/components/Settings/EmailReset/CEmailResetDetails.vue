@@ -1,77 +1,56 @@
 <template>
-  <v-card
-    class="pa-4"
-    flat
-    rounded
-  >
-    <v-card-title>
-      Referral Details
-    </v-card-title>
-    <v-card-text>
-      <v-row v-if="hasSelectedItem">
-        <v-col cols="12">
-          <v-simple-table>
-            <tbody>
-            <tr>
-              <td class="font-weight-medium">Referral ID</td>
-              <td>{{ selectedItem.id }}</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">Member</td>
-              <td>{{ selectedItem.member }}</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">Old Email</td>
-              <td>{{ selectedItem.old_email }}</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">New Email</td>
-              <td>{{ selectedItem.new_email }}</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">Date</td>
-              <td>{{ selectedItem.date }}</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">Status</td>
-              <td :class="getStatusColor()">{{ selectedItem.status }}</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">Approved/Disapproved At</td>
-              <td>N/A</td>
-            </tr>
-            <tr>
-              <td class="font-weight-medium">Approved/Disapproved By</td>
-              <td>N/A</td>
-            </tr>
-            </tbody>
-          </v-simple-table>
-        </v-col>
-        <v-col cols="4" v-for="(image,index) in selectedItem.images" :key="index">
-          <v-card @click="selectImage(image)">
-            <v-img :src="image" eager></v-img>
-          </v-card>
-        </v-col>
-      </v-row>
+  <div>
+    <v-simple-table>
+      <tbody>
+      <tr>
+        <td class="font-weight-medium">Referral ID</td>
+        <td>{{ selectedItem.id }}</td>
+      </tr>
+      <tr>
+        <td class="font-weight-medium">Member</td>
+        <td>{{ selectedItem.member }}</td>
+      </tr>
+      <tr>
+        <td class="font-weight-medium">Old Email</td>
+        <td>{{ selectedItem.old_email }}</td>
+      </tr>
+      <tr>
+        <td class="font-weight-medium">New Email</td>
+        <td>{{ selectedItem.new_email }}</td>
+      </tr>
+      <tr>
+        <td class="font-weight-medium">Date</td>
+        <td>{{ selectedItem.date }}</td>
+      </tr>
+      <tr>
+        <td class="font-weight-medium">Status</td>
+        <td :class="getStatusColor()">{{ selectedItem.status }}</td>
+      </tr>
+      <tr>
+        <td class="font-weight-medium">Reason</td>
+        <td :class="getStatusColor()">{{ selectedItem.reason }}</td>
+      </tr>
 
-      <p v-else class="text-center py-12">
-        <v-icon>mdi-cursor-default-click-outline</v-icon>
-        Select an item from the left panel first.
-      </p>
+<!--      <tr>-->
+<!--        <td class="font-weight-medium">Approved/Disapproved At</td>-->
+<!--        <td>N/A</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td class="font-weight-medium">Approved/Disapproved By</td>-->
+<!--        <td>N/A</td>-->
+<!--      </tr>-->
+      </tbody>
+    </v-simple-table>
+    <v-row dense class="mt-5">
+      <v-col cols="12">
+        <c-email-reset-approval-modal></c-email-reset-approval-modal>
+      </v-col>
+      <v-col cols="12">
+        <c-email-reset-disapproval-modal></c-email-reset-disapproval-modal>
+      </v-col>
+    </v-row>
+  </div>
 
-
-    </v-card-text>
-    <v-card-actions v-if="hasSelectedItem">
-      <v-row dense>
-        <v-col cols="12">
-          <c-email-reset-approval-modal></c-email-reset-approval-modal>
-        </v-col>
-        <v-col cols="12">
-          <c-email-reset-disapproval-modal></c-email-reset-disapproval-modal>
-        </v-col>
-      </v-row>
-    </v-card-actions>
-  </v-card>
 </template>
 
 <script>

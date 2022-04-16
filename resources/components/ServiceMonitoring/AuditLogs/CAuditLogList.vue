@@ -16,12 +16,24 @@
 
       <!-- Search and date filter -->
       <v-row>
-        <v-col cols="12" sm="8">
+        <v-col cols="12" sm="4">
           <v-text-field
             dense
             append-icon="mdi-magnify"
             label="Search"
           ></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="4">
+          <v-autocomplete
+            dense
+            label="Tags"
+            :items="tags"
+            multiple
+            chips
+            small-chips
+            deletable-chips
+            clearable
+          ></v-autocomplete>
         </v-col>
         <v-col cols="12" sm="2">
           <v-text-field
@@ -88,7 +100,17 @@ export default {
       {text: 'Additional Info', value: 'additional_info'},
       {text: 'Date', value: 'date'},
     ],
-
+    tags: [
+      'Admin',
+      'Member',
+      'Auth',
+      'E-Loading',
+      'Bills Payment',
+      'Money Transfer',
+      'Ticketing',
+      'Settings',
+      'System',
+    ],
     items: [
       {
         description: 'Mensas sunt tumultumques de flavum vortex.',

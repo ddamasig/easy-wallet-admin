@@ -1,43 +1,42 @@
 <template>
-  <div>
+  <div class="top">
     <c-app-bar></c-app-bar>
     <v-row
-      justify="center"
-      align="start"
-      class="px-3 pb-12"
+      justify="start"
+      align="center"
       dense
     >
-      <v-col
-        cols="12"
-        sm="5"
-        md="4"
-        :class="listClass"
-      >
-        <c-email-reset-list
-          :items="items"
-          @select-item="handleSelectItemEvent"
-        ></c-email-reset-list>
+      <v-col>
+        <c-email-reset-list @select-item="handleSelectItemEvent"/>
       </v-col>
 
-      <v-col
-        sm="6"
-        md="4"
-        :class="detailsClass"
+      <v-navigation-drawer
+        v-if="showDetails"
+        absolute
+        right
+        permanent
+        width="400"
       >
-        <v-toolbar
-          flat
-          class="pa-3 mb-0 d-block d-sm-none"
-        >
-          <v-icon @click="selectedItem = {}">
-            mdi-arrow-left
-          </v-icon>
-        </v-toolbar>
-        <c-email-reset-details
-          :selectedItem="selectedItem"
-          @select-image="handleSelectImageEvent"
-        ></c-email-reset-details>
-      </v-col>
+        <v-divider></v-divider>
+        <v-card flat>
+          <v-card-title>
+            <v-toolbar flat dense>
+              <v-toolbar-title>Details</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="handleCloseDrawerEvent">
+                <v-icon>
+                  mdi-close
+                </v-icon>
+              </v-btn>
+            </v-toolbar>
+          </v-card-title>
+          <v-card-text>
+            <c-email-reset-details :selectedItem="selectedItem"/>
+          </v-card-text>
+        </v-card>
+      </v-navigation-drawer>
     </v-row>
+
   </div>
 </template>
 
@@ -46,82 +45,28 @@ import CEmailResetList from "@/components/Settings/EmailReset/CEmailResetList";
 import CEmailResetDetails from "@/components/Settings/EmailReset/CEmailResetDetails";
 
 export default {
-  name: 'EmailResetRequestsPage',
-  components: {CEmailResetList, CEmailResetDetails},
+  name: 'ServiceMonitoringELoading',
+  components: {CEmailResetDetails, CEmailResetList},
   layout: 'home',
   data: () => ({
-    showList: true,
-    selectedImage: '',
-    selectedItem: {},
-    items: [
-      {
-        member: 'Harris Quedado',
-        old_email: 'harris@example.net',
-        new_email: 'hoquedado@revlv.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'MT9123JK22'
-      },
-      {
-        member: 'Karl Limlengco',
-        old_email: 'karl@example.net',
-        new_email: 'klimlengco@revlv.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'MT9123JK22'
-      },
-      {
-        member: 'Ryan Labrador',
-        old_email: 'ryan@example.net',
-        new_email: 'rvl@revlv.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'MT9123JK22'
-      },
-      {
-        member: 'Ardee Poblete',
-        old_email: 'ardee@example.net',
-        new_email: 'apoblete@revlv.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'MT9123JK22'
-      },
-      {
-        member: 'Dean Simon Damasig',
-        old_email: 'dean@example.net',
-        new_email: 'ddamasig@revlv.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'MT9123JK22'
-      },
-    ]
+    showDetails: false,
+    selectedItem: null,
   }),
-  computed: {
-    listClass() {
-      if (this.selectedItem.images === undefined) {
-        return 'd-block'
-      }
-      return 'd-none d-sm-block'
-    },
-    detailsClass() {
-      if (!this.selectedItem !== undefined) {
-        return 'd-block'
-      }
-      return 'd-none d-sm-block'
-    },
-  },
   methods: {
-    handleSelectImageEvent(image) {
-      console.log('Received select-image event')
-      this.selectedImage = image
-    },
     handleSelectItemEvent(item) {
-      console.log('Received select-item event')
       this.selectedItem = item
+      this.showDetails = true
+      this.$vuetify.goTo(".top", {
+        duration: 0
+      })
     },
-    handleCloseImageViewer(item) {
-      console.log('Received close-image-viewer event')
-      this.selectedImage = ''
+    handleCloseDrawerEvent() {
+      this.$vuetify.goTo(`#item-${this.selectedItem.id}`, {
+        duration: 0,
+        offset: 200
+      })
+      this.selectedItem = null
+      this.showDetails = false
     },
   }
 }
