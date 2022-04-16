@@ -52,13 +52,22 @@
       </v-chip-group>
     </template>
     <template v-slot:[`item.member`]="{ item }">
-      <v-avatar size="32">
+      <v-avatar size="32" :id="`item-${item.id}`">
         <v-img :src="item.avatar"></v-img>
       </v-avatar>
       <span>{{ item.member }}</span>
     </template>
     <template v-slot:[`item.status`]="{ item }">
       <v-chip color="success" small>{{ item.status }}</v-chip>
+    </template>
+
+    <template #footer>
+      <div class="text-center mx-auto">
+        <v-btn text block>
+          Show more
+        </v-btn>
+      </div>
+
     </template>
   </v-data-table>
 

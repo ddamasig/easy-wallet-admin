@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="top">
     <c-app-bar></c-app-bar>
     <v-row
       justify="start"
@@ -7,13 +7,33 @@
       dense
     >
       <v-col>
-        <c-money-transfer-list @select-item="handleSelectItemEvent"></c-money-transfer-list>
+        <c-money-transfer-list @select-item="handleSelectItemEvent"/>
       </v-col>
 
-      <c-money-transfer-details
-        :selectedItem="selectedItem"
-        @close-drawer="handleCloseDrawerEvent"
-      ></c-money-transfer-details>
+      <v-navigation-drawer
+        v-if="showDetails"
+        absolute
+        right
+        permanent
+        width="400"
+      >
+        <v-card flat>
+          <v-card-title>
+            <v-toolbar flat dense>
+              <v-toolbar-title>Details</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="handleCloseDrawerEvent">
+                <v-icon>
+                  mdi-close
+                </v-icon>
+              </v-btn>
+            </v-toolbar>
+          </v-card-title>
+          <v-card-text>
+            <c-money-transfer-details :selectedItem="selectedItem"/>
+          </v-card-text>
+        </v-card>
+      </v-navigation-drawer>
     </v-row>
 
   </div>
@@ -28,17 +48,25 @@ export default {
   components: {CMoneyTransferDetails, CMoneyTransferList},
   layout: 'home',
   data: () => ({
-    showList: true,
+    showDetails: false,
     selectedItem: null,
   }),
   methods: {
     handleSelectItemEvent(item) {
       this.selectedItem = item
+      this.showDetails = true
+      this.$vuetify.goTo(".top", {
+        duration: 0
+      })
     },
     handleCloseDrawerEvent() {
-      console.log('close drawer')
+      this.$vuetify.goTo(`#item-${this.selectedItem.id}`, {
+        duration: 0,
+        offset: 200
+      })
       this.selectedItem = null
-    }
+      this.showDetails = false
+    },
   }
 }
 </script>
