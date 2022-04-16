@@ -1,173 +1,197 @@
 <template>
-  <v-card
-    class="p-4"
-    flat
+  <v-data-table
+    :headers="headers"
+    :items="items"
+    sort-by="date"
+    single-select
+    v-model="selectedItem"
+    item-key="id"
+    hide-default-footer
+    class="transparent my-4"
+    @click:row="selectItem"
+    :item-class="selectedItemClass"
   >
-    <v-card-title class="pa-6">
-      <v-row>
-        <v-col cols="12">
-          <p>Filters</p>
-        </v-col>
-        <v-col cols="12" sm="6">
-          <v-text-field
-            label="Type keywords here"
-            prepend-inner-icon="mdi-magnify"
-            hide-details
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" sm="3">
-          <v-text-field
-            label="Occurrence Date From"
-            type="date"
-            hide-details
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" sm="3">
-          <v-text-field
-            label="Occurrence Date Until"
-            type="date"
-            hide-details
-          ></v-text-field>
-        </v-col>
+    <template #top>
+      <h3 class="mb-5">Money Transfer</h3>
 
-        <v-col cols="12">
-          <v-autocomplete
-            v-model="filters.tags"
-            :items="tags"
-            item-color="primary"
-            deletable-chips
-            color="primary"
-            label="Tags"
-            multiple
-            chips
-            small-chips
-            clearable
-          ></v-autocomplete>
+      <!-- Search and date filter -->
+      <v-row>
+        <v-col cols="12" sm="8">
+          <v-text-field
+            dense
+            append-icon="mdi-magnify"
+            label="Search"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="2">
+          <v-text-field
+            dense
+            label="Starting Date"
+            type="date"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" sm="2">
+          <v-text-field
+            dense
+            label="End Date"
+            type="date"
+          ></v-text-field>
         </v-col>
       </v-row>
+    </template>
+    <template #[`item.user`]="{ item }">
+      <span :id="`item-${item.id}`">{{ item.user }}</span>
+    </template>
 
-      <v-row>
-        <v-col sm="4">
-          <v-btn
-            color="primary"
-            dark
-            elevation="0"
-            class="mb-2"
-          >
-            Apply
-          </v-btn>
-
-          <v-btn
-            color="primary"
-            dark
-            elevation="0"
-            outlined
-            class="mb-2"
-          >
-            Clear
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-card-title>
-
-    <v-divider></v-divider>
-
-    <v-card-text class="pa-3">
-      <v-data-table
-        :headers="headers"
-        :items="items"
-        sort-by="date"
-        single-select
-        v-model="selectedItem"
-        item-key="id"
-        show-select
-        checkbox-color="primary"
+    <template #[`item.additional_info`]="{ item }">
+      <span
+        class="overflow-x-hidden text-truncate d-block"
+        style="max-width: 300px !important;"
       >
-        <template v-slot:[`item.tags`]="{ item }">
-          <v-chip
-            v-for="(tag,index) in item.tags"
-            :key="index"
-            small
-            class="mr-1"
-          >
-            {{ tag }}
-          </v-chip>
-        </template>
-        <template v-slot:no-data>
-          <v-btn
-            color="primary"
-            @click="initialize"
-          >
-            Reset
-          </v-btn>
-        </template>
-      </v-data-table>
+        {{ item.additional_info }}
+     </span>
+    </template>
 
-    </v-card-text>
-  </v-card>
+
+    <template #[`item.tags`]="{ item }">
+      <v-chip
+        v-for="(tag,index) in item.tags"
+        :key="index"
+        class="mr-1"
+        small
+      >
+        {{ tag }}
+      </v-chip>
+    </template>
+
+    <template #footer>
+      <div class="text-center mx-auto mt-3">
+        <v-btn text block>
+          <v-icon class="mr-1">mdi-refresh</v-icon>
+          Show more
+        </v-btn>
+      </div>
+
+    </template>
+  </v-data-table>
+
 </template>
 
 <script>
 export default {
-  props: {
-    items: Array
-  },
   data: () => ({
-    selectedItem: [],
-    dialog: false,
-    dialogDelete: false,
-    tags: [
-      'Auth',
-      'Member',
-      'Admin',
-      'E-Loading',
-      'Bills Payment',
-      'Ticketing',
-      'Money Transfer',
-      'Settings',
-      'Daemon',
-    ],
-    filters: {
-      tags: null
-    },
+    search: '',
     headers: [
-      {
-        text: 'Description',
-        align: 'start',
-        sortable: false,
-        value: 'description',
-      },
       {text: 'User', value: 'user'},
+      {text: 'Description', value: 'description'},
       {text: 'Tags', value: 'tags'},
+      {text: 'Additional Info', value: 'additional_info'},
       {text: 'Date', value: 'date'},
     ],
-    editedIndex: -1,
-    editedItem: {
-      name: '',
-      calories: 0,
-      fat: 0,
-      carbs: 0,
-      protein: 0,
-    },
-    defaultItem: {
-      name: '',
-      calories: 0,
-      fat: 0,
-      carbs: 0,
-      protein: 0,
-    },
+
+    items: [
+      {
+        description: 'Mensas sunt tumultumques de flavum vortex.',
+        user: 'Harris Quedado',
+        tags: ['Auth', 'Member'],
+        date: '10:30 pm, March 31, 2022',
+        additional_info: '{\n' +
+          '\t"glossary": {\n' +
+          '        "title": "example glossary",\n' +
+          '\t\t"GlossDiv": {\n' +
+          '            "title": "S",\n' +
+          '\t\t\t"GlossList": {\n' +
+          '                "GlossEntry": {\n' +
+          '                    "ID": "SGML",\n' +
+          '\t\t\t\t\t"SortAs": "SGML",\n' +
+          '\t\t\t\t\t"GlossTerm": "Standard Generalized Markup Language",\n' +
+          '\t\t\t\t\t"Acronym": "SGML",\n' +
+          '\t\t\t\t\t"Abbrev": "ISO 8879:1986",\n' +
+          '\t\t\t\t\t"GlossDef": {\n' +
+          '                        "para": "A meta-markup language, used to create markup languages such as DocBook.",\n' +
+          '\t\t\t\t\t\t"GlossSeeAlso": ["GML", "XML"]\n' +
+          '                    },\n' +
+          '\t\t\t\t\t"GlossSee": "markup"\n' +
+          '                }\n' +
+          '            }\n' +
+          '        }\n' +
+          '    }\n' +
+          '}',
+        avatar: 'https://picsum.photos/32',
+        id: 1
+      },
+      {
+        description: 'Mensas sunt tumultumques de flavum vortex.',
+        user: 'Dean Simon Damasig',
+        tags: ['Auth', 'Admin'],
+        date: '10:30 pm, March 31, 2022',
+        avatar: 'https://picsum.photos/34',
+        id: 2
+      },
+      {
+        description: 'Mensas sunt tumultumques de flavum vortex.',
+        user: 'Ryan Labrador',
+        tags: ['Auth', 'Member'],
+        date: '10:30 pm, March 31, 2022',
+        avatar: 'https://picsum.photos/35',
+        id: 3
+      },
+      {
+        description: 'Mensas sunt tumultumques de flavum vortex.',
+        user: 'John Jackson Betito',
+        tags: ['Auth', 'Member'],
+        date: '10:30 pm, March 31, 2022',
+        avatar: 'https://picsum.photos/36',
+        id: 4
+      },
+      {
+        description: 'Mensas sunt tumultumques de flavum vortex.',
+        user: 'Max Betito',
+        tags: ['Auth', 'Member'],
+        date: '10:30 pm, March 31, 2022',
+        avatar: 'https://picsum.photos/37',
+        id: 5
+      },
+      {
+        description: 'Mensas sunt tumultumques de flavum vortex.',
+        user: 'John Jackson Betito',
+        tags: ['Auth', 'Member'],
+        date: '10:30 pm, March 31, 2022',
+        id: 6
+      },
+    ],
+
+    selectedItem: [],
+    filter: null,
+    filters: [
+      {
+        name: 'Pending',
+        count: '10'
+      },
+      {
+        name: 'Success',
+        count: '36'
+      },
+      {
+        name: 'Failed',
+        count: '0'
+      },
+    ]
   }),
-
-  watch: {
-    selectedItem(val) {
-      this.$emit('select-item', val[0])
-    }
-  },
-
-  created() {
-  },
-
   methods: {
-  },
+    selectItem(item) {
+      this.selectedItem = [item]
+      this.$emit('select-item', item)
+    },
+    selectedItemClass(item) {
+      if (this.selectedItem.length > 0) {
+        if (item.id === this.selectedItem[0].id) {
+          return 'primary--bg primary--text pointer'
+        }
+      }
+
+      return 'pointer'
+    }
+  }
 }
 </script>
