@@ -12,7 +12,7 @@
     :item-class="selectedItemClass"
   >
     <template #top>
-      <h3>Money Transfer</h3>
+      <h3 class="mb-5">Money Transfer</h3>
 
       <!-- Search and date filter -->
       <v-row>

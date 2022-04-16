@@ -1,41 +1,40 @@
 <template>
-  <div>
+  <div class="top">
     <c-app-bar></c-app-bar>
     <v-row
-      justify="center"
-      align="start"
-      class="px-3 pb-12"
+      justify="start"
+      align="center"
       dense
     >
-      <v-col
-        cols="12"
-        sm="6"
-        md="4"
-        :class="listClass"
-      >
-        <c-e-loading-list
-          :items="items"
-          @select-item="handleSelectItemEvent"
-        ></c-e-loading-list>
+      <v-col>
+        <c-e-loading-list @select-item="handleSelectItemEvent"/>
       </v-col>
 
-      <v-col
-        sm="6"
-        md="4"
-        :class="detailsClass"
+      <v-navigation-drawer
+        v-if="showDetails"
+        absolute
+        right
+        permanent
+        width="400"
       >
-        <v-toolbar
-          flat
-          class="pa-3 mb-0 d-block d-sm-none"
-        >
-          <v-icon @click="selectedItem = null">
-            mdi-arrow-left
-          </v-icon>
-        </v-toolbar>
-        <c-e-loading-details
-          :selectedItem="selectedItem"
-        ></c-e-loading-details>
-      </v-col>
+        <v-divider></v-divider>
+        <v-card flat>
+          <v-card-title>
+            <v-toolbar flat dense>
+              <v-toolbar-title>Details</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="handleCloseDrawerEvent">
+                <v-icon>
+                  mdi-close
+                </v-icon>
+              </v-btn>
+            </v-toolbar>
+          </v-card-title>
+          <v-card-text>
+            <c-eloading-details :selectedItem="selectedItem"/>
+          </v-card-text>
+        </v-card>
+      </v-navigation-drawer>
     </v-row>
 
   </div>
@@ -43,91 +42,32 @@
 
 <script>
 import CELoadingList from "@/components/ServiceMonitoring/ELoading/CELoadingList";
-import CELoadingDetails from "@/components/ServiceMonitoring/ELoading/CEloadingDetails";
+import CEloadingDetails from "@/components/ServiceMonitoring/ELoading/CEloadingDetails";
 
 export default {
   name: 'ServiceMonitoringELoading',
-  components: {CELoadingList, CELoadingDetails},
+  components: {CEloadingDetails, CELoadingList},
   layout: 'home',
   data: () => ({
+    showDetails: false,
     selectedItem: null,
-    items: [
-      {
-        network: 'Globe',
-        number: '+6391231231234',
-        customer_name: 'Daryl Dayrit',
-        promo: 'GoSurf50',
-        amount_deducted_from_wallet: 'PHP 51',
-        member: 'Harris Quedado',
-        date: '10:30 am, March 30, 2022',
-        status: 'Success',
-        id: 'PL9288UYX21'
-      },
-      {
-        network: 'TNT',
-        number: '+6391231231234',
-        customer_name: 'Ryan Alonzo',
-        promo: 'UnliText100',
-        amount_deducted_from_wallet: 'PHP 103',
-        member: 'Juan Dela Cruz',
-        date: '10:30 am, March 28, 2022',
-        status: 'Success',
-        id: 'G23HHJ9982'
-      },
-      {
-        network: 'Globe',
-        number: '+6391231231234',
-        customer_name: 'Roger Trocio',
-        promo: 'GoExtra99',
-        amount_deducted_from_wallet: 'PHP 100',
-        member: 'Juan Dela Cruz',
-        date: '10:30 am, March 28, 2022',
-        status: 'Success',
-        id: 'PL9288UYX21'
-      },
-      {
-        network: 'Globe',
-        number: '+6391231231238',
-        customer_name: 'Daryl Dayrit',
-        promo: 'GoSurf50',
-        amount_deducted_from_wallet: 'PHP 51',
-        member: 'Juan Dela Cruz',
-        date: '10:30 am, March 30, 2022',
-        status: 'Success',
-        id: 'PL9288UYX21'
-      },
-      {
-        network: 'Globe',
-        number: '+6391231231239',
-        customer_name: 'Daryl Dayrit',
-        promo: 'GoSurf50',
-        amount_deducted_from_wallet: 'PHP 51',
-        member: 'Juan Dela Cruz',
-        date: '10:30 am, March 30, 2022',
-        status: 'Success',
-        id: 'PL9288UYX21'
-      },
-    ]
   }),
-  computed: {
-    listClass() {
-      if (!this.selectedItem) {
-        return 'd-block'
-      }
-      return 'd-none d-sm-block'
-    },
-    detailsClass() {
-      if (this.selectedItem) {
-        return 'd-block'
-      }
-      return 'd-none d-sm-block'
-    },
-  },
   methods: {
     handleSelectItemEvent(item) {
-      console.log('Received select-item event')
       this.selectedItem = item
-    }
+      this.showDetails = true
+      this.$vuetify.goTo(".top", {
+        duration: 0
+      })
+    },
+    handleCloseDrawerEvent() {
+      this.$vuetify.goTo(`#item-${this.selectedItem.id}`, {
+        duration: 0,
+        offset: 200
+      })
+      this.selectedItem = null
+      this.showDetails = false
+    },
   }
 }
 </script>
