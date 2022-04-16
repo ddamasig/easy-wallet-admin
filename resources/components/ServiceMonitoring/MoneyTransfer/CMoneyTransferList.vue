@@ -52,18 +52,21 @@
       </v-chip-group>
     </template>
     <template v-slot:[`item.member`]="{ item }">
-      <v-avatar size="32" :id="`item-${item.id}`">
+      <v-avatar size="32" :id="`item-${item.id}`" class="mr-1">
         <v-img :src="item.avatar"></v-img>
       </v-avatar>
       <span>{{ item.member }}</span>
     </template>
     <template v-slot:[`item.status`]="{ item }">
-      <v-chip color="success" small>{{ item.status }}</v-chip>
+      <span class="success--text">
+        {{ item.status }}
+      </span>
     </template>
 
     <template #footer>
-      <div class="text-center mx-auto">
+      <div class="text-center mx-auto mt-3">
         <v-btn text block>
+          <v-icon class="mr-1">mdi-refresh</v-icon>
           Show more
         </v-btn>
       </div>

@@ -17,6 +17,7 @@
         permanent
         width="400"
       >
+        <v-divider></v-divider>
         <v-card flat>
           <v-card-title>
             <v-toolbar flat dense>
