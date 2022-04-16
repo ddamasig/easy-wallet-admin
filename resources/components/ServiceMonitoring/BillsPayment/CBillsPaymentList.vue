@@ -121,6 +121,7 @@ export default {
         member: 'Juan Dela Cruz',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        avatar: 'https://picsum.photos/32',
         id: 1
       },
       {
@@ -132,6 +133,7 @@ export default {
         member: 'Juan Dela Cruz',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        avatar: 'https://picsum.photos/33',
         id: 2
       },
       {
@@ -143,6 +145,7 @@ export default {
         member: 'Juan Dela Cruz',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        avatar: 'https://picsum.photos/34',
         id: 3
       },
       {
@@ -154,6 +157,7 @@ export default {
         member: 'Juan Dela Cruz',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        avatar: 'https://picsum.photos/35',
         id: 4
       },
       {
@@ -165,6 +169,7 @@ export default {
         member: 'Juan Dela Cruz',
         date: '10:30 am, March 30, 2022',
         status: 'Success',
+        avatar: 'https://picsum.photos/36',
         id: 5
       },
     ]
