@@ -2,8 +2,8 @@
   <v-app-bar
     app
     dense
-    color="transparent"
-    elevation="0"
+    color="white"
+    elevate-on-scroll
   >
     <v-app-bar-nav-icon
       @click="toggleNavigationBar"

@@ -1,154 +1,77 @@
 <template>
-  <div>
+  <div class="top">
     <c-app-bar></c-app-bar>
     <v-row
-      justify="center"
-      align="start"
-      class="px-3 pb-12"
+      justify="start"
+      align="center"
       dense
     >
-      <v-col
-        cols="12"
-        sm="6"
-        md="5"
-        :class="listClass"
-      >
-        <c-referral-claim-list
-          :items="items"
-          @select-item="handleSelectItemEvent"
-        ></c-referral-claim-list>
+      <v-col>
+        <c-referral-claim-list @select-item="handleSelectItemEvent"/>
       </v-col>
 
-      <v-col
-        sm="6"
-        md="4"
-        :class="detailsClass"
+      <v-navigation-drawer
+        v-if="showDetails"
+        absolute
+        right
+        permanent
+        width="400"
       >
-        <v-toolbar
-          flat
-          class="pa-3 mb-0 d-block d-sm-none"
-        >
-          <v-icon @click="selectedItem = {}">
-            mdi-arrow-left
-          </v-icon>
-        </v-toolbar>
-        <c-referral-claim-details
-          :selectedItem="selectedItem"
-          @select-image="handleSelectImageEvent"
-        ></c-referral-claim-details>
-      </v-col>
+        <v-divider></v-divider>
+        <v-card flat>
+          <v-card-title>
+            <v-toolbar flat dense>
+              <v-toolbar-title>Details</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="handleCloseDrawerEvent">
+                <v-icon>
+                  mdi-close
+                </v-icon>
+              </v-btn>
+            </v-toolbar>
+          </v-card-title>
+          <v-card-text>
+            <c-referral-claim-details :selectedItem="selectedItem" @select-image="handleSelectImageEvent"/>
+          </v-card-text>
+        </v-card>
+      </v-navigation-drawer>
     </v-row>
-    <c-image-viewer
-      :src="selectedImage"
-      @close-image-viewer="handleCloseImageViewer"
-    ></c-image-viewer>
+    <c-image-viewer :src="selectedImage" @close-drawer="handleCloseDrawerEvent"/>
   </div>
 </template>
 
 <script>
+import CImageViewer from "@/components/General/CImageViewer";
 import CReferralClaimDetails from "@/components/ServiceMonitoring/ReferralClaims/CReferralClaimDetails";
 import CReferralClaimList from "@/components/ServiceMonitoring/ReferralClaims/CReferralClaimList";
-import CImageViewer from "@/components/General/CImageViewer";
 
 export default {
-  name: 'ServiceMonitoringCashOutRequests',
-  components: {CReferralClaimDetails, CReferralClaimList, CImageViewer},
+  name: 'ServiceMonitoringReferralClaims',
+  components: {CReferralClaimList, CReferralClaimDetails, CImageViewer},
   layout: 'home',
   data: () => ({
-    showList: true,
-    selectedImage: '',
-    selectedItem: {},
-    items: [
-      {
-        referred_by: 'Juan Dela Cruz',
-        new_member_name: 'LeBron James',
-        new_member_email: 'lebronjames@example.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Invitation Sent',
-        id: 'MT9123JK22',
-        images: [
-          'https://placekitten.com/640/360',
-          'https://placekitten.com/640/361',
-          'https://placekitten.com/640/362',
-        ]
-      },
-      {
-        referred_by: 'Juan Dela Cruz',
-        new_member_name: 'Derek Rose',
-        new_member_email: 'drose@example.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Invitation Sent',
-        id: 'MT9123JK22',
-        images: [
-          'https://placekitten.com/640/360',
-        ]
-      },
-      {
-        referred_by: 'Juan Dela Cruz',
-        new_member_name: 'George St. Pierre',
-        new_member_email: 'gsp@example.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Invitation Sent',
-        id: 'MT9123JK22',
-        images: [
-          'https://placekitten.com/640/360',
-          'https://placekitten.com/640/362',
-        ]
-      },
-      {
-        referred_by: 'Juan Dela Cruz',
-        new_member_name: 'Israel Adesanya',
-        new_member_email: 'stylebender@example.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Invitation Sent',
-        id: 'MT9123JK22',
-        images: [
-          'https://placekitten.com/640/360',
-          'https://placekitten.com/640/361',
-          'https://placekitten.com/640/362',
-        ]
-      },
-      {
-        referred_by: 'Juan Dela Cruz',
-        new_member_name: 'Henry Cejudo',
-        new_member_email: 'triplec@example.net',
-        date: '10:30 am, March 30, 2022',
-        status: 'Invitation Sent',
-        id: 'MT9123JK22',
-        images: [
-          'https://placekitten.com/640/360',
-          'https://placekitten.com/640/361',
-          'https://placekitten.com/640/362',
-        ]
-      },
-    ]
+    showDetails: false,
+    selectedItem: null,
+    selectedImage: null,
   }),
-  computed: {
-    listClass() {
-      if (this.selectedItem.images === undefined) {
-        return 'd-block'
-      }
-      return 'd-none d-sm-block'
-    },
-    detailsClass() {
-      if (!this.selectedItem !== undefined) {
-        return 'd-block'
-      }
-      return 'd-none d-sm-block'
-    },
-  },
   methods: {
-    handleSelectImageEvent(image) {
-      console.log('Received select-image event')
-      this.selectedImage = image
-    },
     handleSelectItemEvent(item) {
-      console.log('Received select-item event')
       this.selectedItem = item
+      this.showDetails = true
+      this.$vuetify.goTo(".top", {
+        duration: 0
+      })
     },
-    handleCloseImageViewer(item) {
-      console.log('Received close-image-viewer event')
-      this.selectedImage = ''
+    handleCloseDrawerEvent() {
+      this.$vuetify.goTo(`#item-${this.selectedItem.id}`, {
+        duration: 0,
+        offset: 200
+      })
+      this.selectedItem = null
+      this.showDetails = false
+    },
+    handleSelectImageEvent(image) {
+      this.selectedImage = image
     },
   }
 }

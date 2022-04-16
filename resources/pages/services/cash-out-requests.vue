@@ -1,47 +1,42 @@
 <template>
-  <div>
+  <div class="top">
     <c-app-bar></c-app-bar>
     <v-row
-      justify="center"
-      align="start"
-      class="px-3 pb-12"
+      justify="start"
+      align="center"
       dense
     >
-      <v-col
-        cols="12"
-        sm="6"
-        md="4"
-        :class="listClass"
-      >
-        <c-cash-out-request-list
-          :items="items"
-          @select-item="handleSelectItemEvent"
-        ></c-cash-out-request-list>
+      <v-col>
+        <c-cash-out-request-list @select-item="handleSelectItemEvent"/>
       </v-col>
 
-      <v-col
-        sm="6"
-        md="4"
-        :class="detailsClass"
+      <v-navigation-drawer
+        v-if="showDetails"
+        absolute
+        right
+        permanent
+        width="400"
       >
-        <v-toolbar
-          flat
-          class="pa-3 mb-0 d-block d-sm-none"
-        >
-          <v-icon @click="selectedItem = {}">
-            mdi-arrow-left
-          </v-icon>
-        </v-toolbar>
-        <c-cash-out-request-details
-          :selectedItem="selectedItem"
-          @select-image="handleSelectImageEvent"
-        ></c-cash-out-request-details>
-      </v-col>
+        <v-divider></v-divider>
+        <v-card flat>
+          <v-card-title>
+            <v-toolbar flat dense>
+              <v-toolbar-title>Details</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="handleCloseDrawerEvent">
+                <v-icon>
+                  mdi-close
+                </v-icon>
+              </v-btn>
+            </v-toolbar>
+          </v-card-title>
+          <v-card-text>
+            <c-cash-out-request-details :selectedItem="selectedItem" @select-image="handleSelectImageEvent"/>
+          </v-card-text>
+        </v-card>
+      </v-navigation-drawer>
     </v-row>
-    <c-image-viewer
-      :src="selectedImage"
-      @close-image-viewer="handleCloseImageViewer"
-    ></c-image-viewer>
+    <c-image-viewer :src="selectedImage" @close-drawer="handleCloseDrawerEvent"/>
   </div>
 </template>
 
@@ -51,131 +46,32 @@ import CCashOutRequestDetails from "@/components/ServiceMonitoring/CashOutReques
 import CImageViewer from "@/components/General/CImageViewer";
 
 export default {
-  name: 'ServiceMonitoringCashOutRequests',
-  components: {CCashOutRequestList, CCashOutRequestDetails, CImageViewer},
+  name: 'ServiceMonitoringCashOut',
+  components: {CCashOutRequestDetails, CCashOutRequestList, CImageViewer},
   layout: 'home',
   data: () => ({
-    showList: true,
-    selectedImage: '',
-    selectedItem: {},
-    items: [
-      {
-        member: 'Harris Quedado',
-        remarks: 'Byssuss congregabo in ferox burdigala!',
-        amount: 'PHP 5,000',
-        date: '10:30 am, March 30, 2022',
-        method: 'GCash',
-        number: '+639123123123',
-        status: 'Pending',
-        id: 'KK23LQD',
-        images: [
-          'https://placekitten.com/640/360',
-          'https://placekitten.com/640/361',
-          'https://placekitten.com/640/362',
-        ]
-      },
-      {
-        member: 'Dean Simon Damasig',
-        remarks: 'Byssuss congregabo in ferox burdigala!',
-        amount: 'PHP 5,000',
-        method: 'GCash',
-        number: '+639123123123',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'KK23LQX',
-        images: [
-          'https://placekitten.com/640/310',
-          'https://placekitten.com/640/342',
-        ]
-      },
-      {
-        member: 'Ryan Labrador',
-        remarks: 'Byssuss congregabo in ferox burdigala!',
-        amount: 'PHP 4,700',
-        method: 'GCash',
-        number: '+639123123123',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'MT9123JK22',
-        images: [
-          'https://placekitten.com/640/360',
-          'https://placekitten.com/640/361',
-          'https://placekitten.com/640/362',
-        ]
-      },
-      {
-        member: 'John Jackson Betito',
-        remarks: 'Byssuss congregabo in ferox burdigala!',
-        amount: 'PHP 1,250',
-        method: 'GCash',
-        number: '+639123123123',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'MT9123JK22',
-        images: [
-          'https://placekitten.com/640/360',
-          'https://placekitten.com/640/361',
-          'https://placekitten.com/640/362',
-        ]
-      },
-      {
-        member: 'Max Betito',
-        remarks: 'Byssuss congregabo in ferox burdigala!',
-        amount: 'PHP 3,250',
-        method: 'GCash',
-        number: '+639123123123',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'MT9123JK22',
-        images: [
-          'https://placekitten.com/640/360',
-          'https://placekitten.com/640/361',
-          'https://placekitten.com/640/362',
-        ]
-      },
-      {
-        member: 'John Jackson Betito',
-        remarks: 'Byssuss congregabo in ferox burdigala!',
-        amount: 'PHP 2,500',
-        method: 'GCash',
-        number: '+639123123123',
-        date: '10:30 am, March 30, 2022',
-        status: 'Pending',
-        id: 'MT9123JK22',
-        images: [
-          'https://placekitten.com/640/360',
-          'https://placekitten.com/640/361',
-          'https://placekitten.com/640/362',
-        ]
-      },
-    ]
+    showDetails: false,
+    selectedItem: null,
+    selectedImage: null,
   }),
-  computed: {
-    listClass() {
-      if (this.selectedItem.images === undefined) {
-        return 'd-block'
-      }
-      return 'd-none d-sm-block'
-    },
-    detailsClass() {
-      if (this.selectedItem.images !== undefined) {
-        return 'd-block'
-      }
-      return 'd-none d-sm-block'
-    },
-  },
   methods: {
-    handleSelectImageEvent(image) {
-      console.log('Received select-image event')
-      this.selectedImage = image
-    },
     handleSelectItemEvent(item) {
-      console.log('Received select-item event')
       this.selectedItem = item
+      this.showDetails = true
+      this.$vuetify.goTo(".top", {
+        duration: 0
+      })
     },
-    handleCloseImageViewer(item) {
-      console.log('Received close-image-viewer event')
-      this.selectedImage = ''
+    handleCloseDrawerEvent() {
+      this.$vuetify.goTo(`#item-${this.selectedItem.id}`, {
+        duration: 0,
+        offset: 200
+      })
+      this.selectedItem = null
+      this.showDetails = false
+    },
+    handleSelectImageEvent(image) {
+      this.selectedImage = image
     },
   }
 }
