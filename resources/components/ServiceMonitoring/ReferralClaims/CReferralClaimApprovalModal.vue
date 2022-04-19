@@ -28,7 +28,7 @@
             auto-grow
           >
           </v-textarea>
-          <v-text-field type="password" label="Enter PIN" prepend-inner-icon="mdi-lock"></v-text-field>
+          <c-pin-field></c-pin-field>
           <p>
             By clicking Approve, you acknowledge that nunquam perdere assimilatio lorem ipsum set amet dolor.
           </p>
@@ -59,7 +59,11 @@
 </template>
 
 <script>
+import CPinField from "@/components/General/CPinField";
+
 export default {
+  components: {CPinField},
+
   data: () => ({
     dialog: false,
     model: {
