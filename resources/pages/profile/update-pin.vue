@@ -10,62 +10,72 @@
       align="center"
       dense
     >
-      <v-col cols="12" sm="3">
-        <v-card flat class="py-2 px-3">
-          <v-card-title>
-            Change PIN
-          </v-card-title>
-          <v-card-subtitle>
-            Enter you current and new PIN below.
-          </v-card-subtitle>
-          <v-card-text>
-            <v-form
-              ref="form"
-            >
-              <p class="mb-0">Current PIN</p>
-              <v-text-field
-                v-model="model.current_pin"
-                type="number"
-                solo
-                dense
-              ></v-text-field>
-              <p class="mb-0">New PIN</p>
-              <v-text-field
-                v-model="model.new_pin"
-                type="number"
-                solo
-                dense
-              ></v-text-field>
-              <p class="mb-0">Confirm New PIN</p>
-              <v-text-field
-                v-model="model.confirm_new_pin"
-                type="number"
-                solo
-                dense
-              ></v-text-field>
-            </v-form>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn
-              block
-              rounded
-              color="primary"
-              elevation="0"
-            >
-              Save
-            </v-btn>
-          </v-card-actions>
-          <v-card-actions>
-            <v-btn
-              block
-              rounded
-              elevation="0"
-              text
-            >
-              Reset
-            </v-btn>
-          </v-card-actions>
-        </v-card>
+      <v-col cols="12" md="6" lg="4" xl="3">
+        <v-form v-model="isFormValid" ref="updatePinForm" @submit.prevent="onSubmit">
+          <v-card outlined class="py-2 px-3">
+            <v-card-title>
+              Change PIN
+            </v-card-title>
+            <v-card-subtitle>
+              Enter you current and new PIN below.
+            </v-card-subtitle>
+            <v-card-text>
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field
+                    v-model="model.old_pin"
+                    label="Old PIN"
+                    class="pin"
+                    type="password"
+                    dense
+                    outlined
+                    :rules="pinRules"
+                  />
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field
+                    v-model="model.new_pin"
+                    label="New PIN"
+                    class="pin"
+                    type="password"
+                    dense
+                    outlined
+                    :rules="pinRules"
+                  />
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field
+                    v-model="model.new_pin_confirmation"
+                    label="Confirm New PIN"
+                    class="pin"
+                    type="password"
+                    dense
+                    outlined
+                    :rules="pinRules"
+                  />
+                </v-col>
+              </v-row>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                text
+                color="primary"
+                @click="dialog = false"
+              >
+                Cancel
+              </v-btn>
+              <v-btn
+                elevation="0"
+                type="submit"
+                color="primary"
+                :disabled="!isFormValid"
+              >
+                Save
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-form>
       </v-col>
 
     </v-row>
@@ -77,15 +87,47 @@
 import CSimpleAppBar from "../../components/CSimpleAppBar";
 
 export default {
+  name: 'UpdatePINPage',
   components: {CSimpleAppBar},
   layout: 'home',
-  name: 'MembershipIndex',
   data: () => ({
+    dialog: false,
+    isFormValid: false,
+    isLoading: false,
     model: {
-      current_pin: '',
+      old_pin: '',
       new_pin: '',
-      confirm_new_pin: '',
+      new_pin_confirmation: '',
+    },
+    pinRules: [
+      v => !!v || 'This field is required',
+      v => /^\d+$/.test(v) || 'This field only accept numbers',
+      v => (v && v.length === 4) || 'The PIN must be exactly 4 digits.',
+    ],
+  }),
+
+  methods: {
+    onSubmit() {
+      const isInvalid = !this.$refs.updatePinForm.validate()
+      if (isInvalid) {
+        return
+      }
+
+      this.isLoading = true
+
+      this.$axios.post('/api/profile', this.model)
+        .then((res) => {
+          console.log('Response:')
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log('Error:')
+          console.log(err)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     }
-  })
+  }
 }
 </script>

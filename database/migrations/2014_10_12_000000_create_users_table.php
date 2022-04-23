@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('user_type')->default('staff');
             $table->date('birthdate')->nullable();
             $table->text('address')->nullable();
+            $table->string('avatar', 128)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

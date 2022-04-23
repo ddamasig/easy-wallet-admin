@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center" align="center" class="fill-height">
-    <v-col cols="12" lg="4" xl="3">
+    <v-col cols="12" sm="6" md="6" lg="4" xl="3">
       <v-form ref="loginForm" @submit.prevent="authenticate">
         <v-card outlined class="pa-3">
           <v-card-title>

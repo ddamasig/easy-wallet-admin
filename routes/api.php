@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-//    Route::post('/login', ['App\Http\Controllers\LoginController', 'authenticate']);
+    Route::post('/profile', ['App\Http\Controllers\ProfileController', 'updatePin']);
 });

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Handle an authentication attempt.
@@ -13,32 +16,34 @@ class LoginController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function authenticate(Request $request)
+    public function updatePin(Request $request): JsonResponse
     {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
+        $input = $request->validate([
+            'old_pin' => 'required|max:4',
+            'new_pin' => 'required|max:4|confirmed',
+            'new_pin_confirmation' => 'required|max:4',
         ]);
 
-        $login_type = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL)
-            ? 'email'
-            : 'mobile_number';
+        $user = Auth::user();
 
-        $request->merge([
-            $login_type => $request->input('username')
-        ]);
-
-        if (Auth::attempt($request->only($login_type, 'password'))) {
-            $request->session()->regenerate();
-
+        if (!Hash::check($input['old_pin'], $user->pin)) {
             return response()->json([
-                'message' => 'Successfully authenticated.'
-            ], 200);
+                'message' => 'Wrong old PIN provided',
+            ], 403);
+        }
+
+        try {
+            $user->pin = bcrypt($input['new_pin']);
+            $user->save();
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'An error has occurred while updating your PIN.',
+            ], 500);
         }
 
         return response()->json([
-            'message' => 'The provided credentials do not match our records.',
-        ], 403);
+            'message' => 'Successfully updated your PIN.',
+        ], 200);
     }
 
 

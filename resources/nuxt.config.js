@@ -55,9 +55,9 @@ export default {
   ],
 
   axios: {
-    baseURL: 'http://' + process.env.BACKEND_URL
+    baseURL: 'http://' + process.env.BACKEND_URL,
     // proxy: true,
-    // credentials: true
+    credentials: true
   },
   proxy: {
     '/laravel': {
