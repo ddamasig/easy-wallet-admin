@@ -2,7 +2,6 @@
   <v-app-bar
     app
     dense
-    color="white"
     elevate-on-scroll
   >
     <v-app-bar-nav-icon

@@ -3,15 +3,15 @@
     <c-simple-app-bar
       title="Update PIN"
       link="/profile"
-    >
-    </c-simple-app-bar>
+    ></c-simple-app-bar>
     <v-row
       justify="center"
       align="center"
+      class="pt-4"
       dense
     >
       <v-col cols="12" md="6" lg="4" xl="3">
-        <v-form v-model="isFormValid" ref="updatePinForm" @submit.prevent="onSubmit">
+        <v-form ref="updatePinForm" v-model="isFormValid" @submit.prevent="onSubmit">
           <v-card outlined class="py-2 px-3">
             <v-card-title>
               Change PIN
@@ -28,7 +28,6 @@
                     class="pin"
                     type="password"
                     dense
-                    outlined
                     :rules="pinRules"
                   />
                 </v-col>
@@ -39,7 +38,6 @@
                     class="pin"
                     type="password"
                     dense
-                    outlined
                     :rules="pinRules"
                   />
                 </v-col>
@@ -50,26 +48,19 @@
                     class="pin"
                     type="password"
                     dense
-                    outlined
                     :rules="pinRules"
                   />
                 </v-col>
               </v-row>
             </v-card-text>
             <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                text
-                color="primary"
-                @click="dialog = false"
-              >
-                Cancel
-              </v-btn>
               <v-btn
                 elevation="0"
                 type="submit"
                 color="primary"
                 :disabled="!isFormValid"
+                :loading="isLoading"
+                block
               >
                 Save
               </v-btn>
@@ -115,14 +106,19 @@ export default {
 
       this.isLoading = true
 
-      this.$axios.post('/api/profile', this.model)
+      this.$axios.post('/api/profile/pin', this.model)
         .then((res) => {
-          console.log('Response:')
-          console.log(res)
+          this.$notifier.showMessage({
+            content: res.data?.message,
+            color: "success"
+          });
+          this.$router.back()
         })
         .catch((err) => {
-          console.log('Error:')
-          console.log(err)
+          this.$notifier.showMessage({
+            content: err.response.data?.message,
+            color: "error"
+          });
         })
         .finally(() => {
           this.isLoading = false

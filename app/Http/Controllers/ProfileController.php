@@ -11,7 +11,43 @@ use Illuminate\Support\Facades\Hash;
 class ProfileController extends Controller
 {
     /**
-     * Handle an authentication attempt.
+     * Updates the password of the logged-in user.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updatePassword(Request $request): JsonResponse
+    {
+        $input = $request->validate([
+            'old_password' => 'required|min:8',
+            'new_password' => 'required|min:8|confirmed',
+            'new_password_confirmation' => 'required|min:8',
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($input['old_password'], $user->password)) {
+            return response()->json([
+                'message' => 'Wrong old password provided',
+            ], 403);
+        }
+
+        try {
+            $user->password = bcrypt($input['new_password']);
+            $user->save();
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'An error has occurred while updating your password.',
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully updated your password.',
+        ], 200);
+    }
+
+    /**
+     * Updates the PIN of the logged-in user.
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse

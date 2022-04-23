@@ -1,20 +1,17 @@
 <template>
   <v-app-bar
+    app
+    dense
     flat
-    color="transparent"
-    class="mb-3"
+    elevate-on-scroll
   >
-    <v-app-bar-nav-icon
-      v-if="link"
-      class="white"
-      @click="$router.push(link)"
-    >
+    <v-app-bar-nav-icon v-if="link" @click="$router.push(link)">
       <v-icon>
         mdi-arrow-left
       </v-icon>
     </v-app-bar-nav-icon>
     <v-app-bar-title>
-      {{ title }}
+      <small>{{ title }}</small>
     </v-app-bar-title>
     <v-spacer></v-spacer>
   </v-app-bar>
@@ -23,8 +20,14 @@
 <script>
 export default {
   props: {
-    link: String,
-    title: String
+    title: {
+      type: String,
+      default: ''
+    },
+    link: {
+      type: String,
+      default: ''
+    },
   }
 }
 </script>
