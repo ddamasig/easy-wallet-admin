@@ -19,6 +19,11 @@ class User extends Authenticatable
     const STAFF = 'staff';
 
     /**
+     * Include these computed attributes everytime.
+     */
+    protected $appends = ['full_name'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -45,6 +50,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'pin',
         'remember_token',
     ];
 
@@ -56,4 +62,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Returns the full name of the user.
+     * @return string
+     */
+    public function getFullNameAttribute(): string
+    {
+        $name = $this->first_name;
+
+        if (!empty($this->middle_name)) {
+            $name .= ' ' . $this->middle_name;
+        }
+
+        if (!empty($this->last_name)) {
+            $name .= ' ' . $this->last_name;
+        }
+        return $name;
+    }
 }

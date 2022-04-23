@@ -13,6 +13,7 @@
 <script>
 export default {
   name: 'HomeLayout',
+  middleware: 'auth',
   data: () => ({})
 }
 </script>

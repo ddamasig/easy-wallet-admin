@@ -1,22 +1,26 @@
 <template>
   <v-row justify="center" align="center" class="fill-height">
-    <v-col cols="12" sm="3">
+    <v-col cols="12" lg="4" xl="3">
       <v-form ref="loginForm" @submit.prevent="authenticate">
-        <v-card flat class="pa-3">
+        <v-card outlined class="pa-3">
           <v-card-title>
             <v-img class="mx-auto" max-width="260" src="/logos/ewallet.png"></v-img>
           </v-card-title>
-          <v-card-text>
+          <v-card-text class="mt-4">
             <v-text-field
               v-model="model.username"
-              label="Email/ID"
+              label="Email/Mobile Number"
               append-icon="mdi-account"
+              dense
+              outlined
             ></v-text-field>
             <v-text-field
               v-model="model.password"
               label="Password"
               type="password"
               append-icon="mdi-lock"
+              dense
+              outlined
             ></v-text-field>
             <v-card rounded outlined class="pa-3 py-1 my-2 mb-4">
               <v-row>

@@ -6,7 +6,7 @@
     transition="slide-y-transition"
     class="pa-0"
   >
-    <template v-slot:activator="{ on, attrs }">
+    <template #activator="{ on, attrs }">
       <v-btn
         icon
         v-bind="attrs"
@@ -21,27 +21,27 @@
     <v-list dense class="pa-0">
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title>John Jackson Betito</v-list-item-title>
-          <v-list-item-subtitle>ID#1020304050</v-list-item-subtitle>
+          <v-list-item-title>{{ user.full_name }}</v-list-item-title>
+          <v-list-item-subtitle>{{ user.mobile_number }}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-list-item to="/profile">
-        <v-list-icon>
-          <v-icon class="mr-1" small>mdi-account-cog</v-icon>
-        </v-list-icon>
         <v-list-item-content>
-          <v-list-item-title>My Profile</v-list-item-title>
+          <v-list-item-title>
+            <v-icon class="mr-1" small>mdi-account-cog</v-icon>
+            My Profile
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
       <v-divider></v-divider>
 
       <v-list-item @click="logout">
-        <v-list-icon>
-          <v-icon color="red" class="mr-1" small>mdi-logout</v-icon>
-        </v-list-icon>
         <v-list-item-content>
-          <v-list-item-title class="red--text">Logout</v-list-item-title>
+          <v-list-item-title class="red--text">
+            <v-icon color="red" class="mr-1" small>mdi-logout</v-icon>
+            Logout
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -76,9 +76,12 @@ export default {
       },
     ]
   }),
+  created() {
+    this.user = this.$auth.user
+  },
   methods: {
     logout() {
-      console.log('Logging out...')
+      this.$auth.logout()
     }
   }
 }

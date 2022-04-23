@@ -68,9 +68,22 @@ export default {
   auth: {
     strategies: {
       local: {
+        redirect: {
+          login: '/',
+          logout: '/'
+        },
         endpoints: {
           login: {
             url: '/login',
+            method: 'post',
+            withCredentials: true,
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+              'Content-Type': 'application/json'
+            }
+          },
+          logout: {
+            url: '/logout',
             method: 'post',
             withCredentials: true,
             headers: {
