@@ -74,7 +74,7 @@ export default {
       local: {
         redirect: {
           login: '/',
-          logout: '/'
+          logout: '/login'
         },
         endpoints: {
           login: {

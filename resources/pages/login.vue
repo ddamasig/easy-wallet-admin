@@ -58,12 +58,6 @@ export default {
   }),
   methods: {
     authenticate() {
-      // this.$auth.loginWith('laravelSanctum', {
-      //   data: {
-      //     email: this.model.email,
-      //     password: this.model.password
-      //   }
-      // })
       this.$axios.get('/sanctum/csrf-cookie', {
         headers: {
           'X-Requested-With': 'XMLHttpRequest'
