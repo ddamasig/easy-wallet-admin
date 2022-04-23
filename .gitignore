@@ -1,4 +1,6 @@
 vendor
 .env
 resources/node_modules
+node_modules
+public
 .idea

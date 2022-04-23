@@ -47,16 +47,52 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     'nuxt-highcharts',
     'vue-web-cam/nuxt'
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://' + process.env.BACKEND_URL
+    // proxy: true,
+    // credentials: true
+  },
+  proxy: {
+    '/laravel': {
+      target: 'https://laravel-auth.nuxtjs.app',
+      pathRewrite: {'^/laravel': '/'}
+    }
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/login',
+            method: 'post',
+            withCredentials: true,
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+              'Content-Type': 'application/json'
+            }
+          },
+          user: {
+            url: '/api/user',
+            method: 'get',
+            propertyName: false,
+            withCredentials: true,
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+              'Content-Type': 'application/json'
+            }
+          }
+        },
+        tokenRequired: false,
+        tokenType: false
+      }
+    }
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

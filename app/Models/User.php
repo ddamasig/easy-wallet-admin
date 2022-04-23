@@ -13,14 +13,29 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * These are the valid user_type values.
+     */
+    const SUPER_ADMIN = 'super_admin';
+    const STAFF = 'staff';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'middle_name',
+        'birthdate',
+        'pin',
         'email',
+        'mobile_number',
         'password',
+        'user_type',
+        'address',
+        'created_at',
+        'update_at',
     ];
 
     /**
