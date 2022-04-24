@@ -58,17 +58,17 @@ export default {
   }),
   methods: {
     authenticate() {
-      this.$axios.get('/sanctum/csrf-cookie', {
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-        withCredentials: true,
-      })
-        .then(function () {
+      // this.$axios.get('/sanctum/csrf-cookie', {
+      //   headers: {
+      //     'X-Requested-With': 'XMLHttpRequest'
+      //   },
+      //   withCredentials: true,
+      // })
+      //   .then(function () {
           this.$auth.loginWith('local', {
             data: this.model,
           });
-        }.bind(this))
+        // }.bind(this))
     }
   }
 }

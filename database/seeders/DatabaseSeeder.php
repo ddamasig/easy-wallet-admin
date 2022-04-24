@@ -15,5 +15,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call(ReferralSettingSeeder::class);
+        $this->call(ReferralRequirementSeeder::class);
+        $this->call(PackageInclusionSeeder::class);
     }
 }

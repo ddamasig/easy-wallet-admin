@@ -1,6 +1,6 @@
 <template>
   <v-card
-    flat
+    outlined
     rounded
     class="pa-3"
   >
@@ -9,27 +9,51 @@
       Any changes made will not affect referral links generated prior to the update.
     </v-card-subtitle>
     <v-card-text>
-      <v-row dense class="mb-0 pb-0">
-        <v-list-item>
-          <v-list-item-avatar>
-            <v-icon>mdi-timer-sand-complete</v-icon>
-          </v-list-item-avatar>
-          <v-list-item-content>
-            <v-list-item-title>Referral Link Validity Duration</v-list-item-title>
-            <v-list-item-subtitle>
-              Generated referral links will expire after a certain amount of time.
-            </v-list-item-subtitle>
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-spacer></v-spacer>
-            <v-col cols="7">
-              <v-text-field v-model="model.expiration" outlined dense type="number" hide-details class="my-auto"
-                            suffix="hours">
-              </v-text-field>
-            </v-col>
-          </v-list-item-action>
-        </v-list-item>
-      </v-row>
+      <v-form ref="durationForm" v-model="isDurationFormValid" @submit.prevent="onSubmitDurationForm">
+        <v-row dense class="mb-0 pb-0">
+          <v-list-item>
+            <v-list-item-avatar>
+              <v-icon>mdi-timer-sand-complete</v-icon>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title>Referral Link Validity Duration</v-list-item-title>
+              <v-list-item-subtitle>
+                Generated referral links will expire after a certain amount of time.
+              </v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-spacer></v-spacer>
+              <v-col cols="12" lg="7">
+                <v-text-field
+                  v-model="model.duration"
+                  outlined
+                  dense
+                  type="number"
+                  hide-details
+                  class="my-auto"
+                  suffix="days"
+                />
+              </v-col>
+            </v-list-item-action>
+          </v-list-item>
+        </v-row>
+        <v-row dense>
+          <v-col>
+            <v-btn
+              type="reset"
+              text
+              v-text="'Reset'"
+            />
+            <v-btn
+              type="submit"
+              color="primary"
+              elevation="0"
+              v-text="'Save'"
+            />
+          </v-col>
+        </v-row>
+      </v-form>
+
 
       <v-divider class="my-6"></v-divider>
 
@@ -53,7 +77,6 @@
                   </v-list-item-avatar>
                   <v-list-item-content>
                     <v-list-item-title>{{ req.name }}</v-list-item-title>
-                    <v-list-item-subtitle>{{ req.file_type }}</v-list-item-subtitle>
                     <v-list-item-subtitle>{{ req.description }}</v-list-item-subtitle>
                   </v-list-item-content>
                   <v-list-item-action>
@@ -121,31 +144,48 @@ export default {
   components: {CNewRequirementModal},
   data: () => ({
     requirementModal: false,
+    isDurationFormValid: false,
     model: {
-      expiration: 48,
+      duration: 0,
       requirements: [
         {
           name: 'Selfie Photo',
           description: 'Please upload a selfie. Make sure to take the photo in a well lit area.',
-          file_type: 'Image',
           icon: 'mdi-image',
         },
         {
           name: 'ID Picture',
           description: 'Please upload a primary ID with your face on it. (e.g. Driver\'s License, Passport, SSS UMID, etc.)',
-          file_type: 'Document/Image',
           icon: 'mdi-image',
         },
         {
           name: 'Proof of Payment',
           description: 'Please upload an image or document such as a GCASH receipt which will serve as a proof of payment.',
-          file_type: 'Document/Image',
           icon: 'mdi-image',
         }
       ]
     },
   }),
+  async created() {
+    await this.getReferralSettings()
+  },
   methods: {
+    async getReferralSettings() {
+      await this.$axios.get('/api/referral/settings')
+        .then((res) => {
+          console.log('Response:')
+          console.log(res)
+          this.model = res.data
+        })
+        .catch((err) => {
+          console.log('Error')
+          console.log(err)
+        })
+    },
+
+    async onSubmitDurationForm() {
+
+    },
     toggleNewRequirementModal() {
       this.requirementModal = !this.requirementModal
     }

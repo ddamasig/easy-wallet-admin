@@ -1,6 +1,6 @@
 <template>
   <v-card
-    flat
+    outlined
     rounded
     class="pa-3"
   >
