@@ -50,6 +50,7 @@
 export default {
   name: 'LoginPage',
   layout: 'blank',
+  auth: false,
   data: () => ({
     model: {
       username: '',
@@ -57,7 +58,7 @@ export default {
     }
   }),
   methods: {
-    authenticate() {
+    async authenticate() {
       // this.$axios.get('/sanctum/csrf-cookie', {
       //   headers: {
       //     'X-Requested-With': 'XMLHttpRequest'
@@ -65,10 +66,11 @@ export default {
       //   withCredentials: true,
       // })
       //   .then(function () {
-          this.$auth.loginWith('local', {
-            data: this.model,
-          });
-        // }.bind(this))
+      await this.$auth.loginWith('laravelSanctum', {
+        data: this.model,
+      });
+      await this.$router.push('/')
+      // }.bind(this))
     }
   }
 }

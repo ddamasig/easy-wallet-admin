@@ -22,6 +22,8 @@ export default {
     port: 3001
   },
 
+  ssr: false,
+
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -51,9 +53,9 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
+    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     'nuxt-highcharts',
     'vue-web-cam/nuxt'
   ],
@@ -63,51 +65,27 @@ export default {
     // proxy: true,
     credentials: true
   },
-  proxy: {
-    '/laravel': {
-      target: 'https://laravel-auth.nuxtjs.app',
-      pathRewrite: {'^/laravel': '/'}
-    }
+  // proxy: {
+  //   '/laravel': {
+  //     target: 'https://laravel-auth.nuxtjs.app',
+  //     pathRewrite: {'^/laravel': '/'}
+  //   }
+  // },
+  router: {
+    middleware: ['auth']
   },
   auth: {
     strategies: {
       local: {
-        redirect: {
-          login: '/',
-          logout: '/login'
-        },
         endpoints: {
-          login: {
-            url: '/login',
-            method: 'post',
-            withCredentials: true,
-            headers: {
-              'X-Requested-With': 'XMLHttpRequest',
-              'Content-Type': 'application/json'
-            }
-          },
-          logout: {
-            url: '/logout',
-            method: 'post',
-            withCredentials: true,
-            headers: {
-              'X-Requested-With': 'XMLHttpRequest',
-              'Content-Type': 'application/json'
-            }
-          },
-          user: {
-            url: '/api/user',
-            method: 'get',
-            propertyName: false,
-            withCredentials: true,
-            headers: {
-              'X-Requested-With': 'XMLHttpRequest',
-              'Content-Type': 'application/json'
-            }
-          }
-        },
-        tokenRequired: false,
-        tokenType: false
+          login: {url: 'api/auth/login', method: 'post', propertyName: 'data.token'},
+          user: {url: 'api/auth/user', method: 'get', propertyName: 'data'},
+          // logout: false
+        }
+      },
+      laravelSanctum: {
+        provider: 'laravel/sanctum',
+        url: process.env.BACKEND_URL,
       }
     }
   },

@@ -16,7 +16,6 @@ import CAlert from "@/components/General/CAlert";
 export default {
   name: 'HomeLayout',
   components: {CAlert},
-  middleware: 'auth',
   data: () => ({})
 }
 </script>
