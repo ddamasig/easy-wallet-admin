@@ -61,7 +61,7 @@ export default {
   ],
 
   axios: {
-    baseURL: 'http://' + process.env.BACKEND_URL,
+    baseURL: process.env.BACKEND_URL,
     // proxy: true,
     credentials: true
   },

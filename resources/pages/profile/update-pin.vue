@@ -110,14 +110,14 @@ export default {
         .then((res) => {
           this.$notifier.showMessage({
             content: res.data?.message,
-            color: "success"
+            color: 'success'
           });
           this.$router.back()
         })
         .catch((err) => {
           this.$notifier.showMessage({
             content: err.response.data?.message,
-            color: "error"
+            color: 'error'
           });
         })
         .finally(() => {

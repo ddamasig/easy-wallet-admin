@@ -12,13 +12,16 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, LogsActivity;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
+    use LogsActivity;
 
     /**
      * These are the valid user_type values.
      */
-    const SUPER_ADMIN = 'super_admin';
-    const STAFF = 'staff';
+    public const SUPER_ADMIN = 'super_admin';
+    public const STAFF = 'staff';
 
     /**
      * Include these computed attributes everytime.

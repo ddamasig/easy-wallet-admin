@@ -7,10 +7,9 @@
       class="px-3 pb-12"
       dense
     >
-      <v-col cols="6">
-        <c-referral-settings-panel class="mb-4"></c-referral-settings-panel>
-        <c-membership-settings-panel class="mb-4"></c-membership-settings-panel>
-        <c-service-inclusions-panel class="mb-4"></c-service-inclusions-panel>
+      <v-col cols="12" sm="6">
+        <c-referral-settings-panel class="mb-4"/>
+        <c-package-inclusions-panel/>
       </v-col>
     </v-row>
   </div>
@@ -19,12 +18,11 @@
 <script>
 
 import CReferralSettingsPanel from "@/components/Settings/CReferralSettingsPanel";
-import CMembershipSettingsPanel from "@/components/Settings/CMembershipSettingsPanel";
-import CServiceInclusionsPanel from "@/components/Settings/CServiceInclusionsPanel";
+import CPackageInclusionsPanel from "@/components/Settings/CPackageInclusionsPanel";
 
 export default {
   name: 'ReferralSettings',
-  components: {CReferralSettingsPanel, CMembershipSettingsPanel, CServiceInclusionsPanel},
+  components: {CReferralSettingsPanel, CPackageInclusionsPanel},
 
   layout: 'home',
   data: () => ({

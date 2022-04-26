@@ -12,7 +12,7 @@
       <v-row dense>
         <v-col cols="12">
           <template
-            v-for="(item,index) in model.products"
+            v-for="(item,index) in package_inclusions"
           >
             <v-list-item
               :key="index"
@@ -20,13 +20,13 @@
               :disabled="item.disabled"
             >
               <v-list-item-avatar>
-                <v-avatar>
-                  <v-img :src="item.photo"></v-img>
-                </v-avatar>
+<!--                <v-avatar>-->
+<!--                  <v-img :src="item.photo"></v-img>-->
+<!--                </v-avatar>-->
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title>{{ item.name }}</v-list-item-title>
-                <v-list-item-subtitle>{{ item.file_type }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ item.file_size_limit }}</v-list-item-subtitle>
                 <v-list-item-subtitle>{{ item.description }}</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
@@ -57,7 +57,7 @@
             </v-list-item>
 
             <v-divider
-              v-if="index < model.products.length - 1"
+              v-if="index < package_inclusions.length - 1"
               :key="`${index}-divider`"
             ></v-divider>
 
@@ -80,7 +80,7 @@
         </v-col>
       </v-row>
     </v-card-text>
-    <c-new-product-inclusion-modal :show="modal"></c-new-product-inclusion-modal>
+    <c-new-product-inclusion-modal :show="showModal"></c-new-product-inclusion-modal>
   </v-card>
 </template>
 
@@ -90,36 +90,32 @@ import CNewProductInclusionModal from "@/components/Settings/CNewProductInclusio
 export default {
   components: {CNewProductInclusionModal},
   data: () => ({
-    modal: false,
-    model: {
-      products: [
-        {
-          name: 'Product 1',
-          description: 'Ubi est festus hibrida. A falsis, rector domesticus ventus.',
-          photo: 'https://placekitten.com/180/181',
-        },
-        {
-          name: 'Product 2',
-          description: 'Ubi est festus hibrida. A falsis, rector domesticus ventus.',
-          photo: 'https://placekitten.com/180/182',
-        },
-        {
-          name: 'Product 3',
-          description: 'Ubi est festus hibrida. A falsis, rector domesticus ventus.',
-          photo: 'https://placekitten.com/180/180',
-        },
-        {
-          name: 'Disabled Product',
-          description: 'Ubi est festus hibrida. A falsis, rector domesticus ventus.',
-          photo: 'https://placekitten.com/180/185',
-          disabled: true
-        },
-      ]
-    },
+    showModal: false,
+    package_inclusions: []
   }),
+  fetch () {
+    this.getReferralSettings()
+  },
   methods: {
+    /**
+     * Gets the package inclusion objects from the database and set it as package_inclusions.
+     *
+     * @return void
+     */
+    async getReferralSettings() {
+      await this.$axios.get('/api/referral/package-inclusions')
+        .then((res) => {
+          this.package_inclusions = res.data?.package_inclusions
+        })
+        .catch((err) => {
+          this.$notifier.showMessage({
+            content: err.response?.data?.message,
+            color: 'error'
+          })
+        })
+    },
     toggleModal() {
-      this.modal = !this.modal
+      this.showModal = !this.showModal
     }
   }
 }

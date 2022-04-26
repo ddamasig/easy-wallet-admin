@@ -1,194 +1,221 @@
 <template>
-  <v-card
-    outlined
-    rounded
-    class="pa-3"
-  >
-    <v-card-title>Referral Settings</v-card-title>
-    <v-card-subtitle>
-      Any changes made will not affect referral links generated prior to the update.
-    </v-card-subtitle>
-    <v-card-text>
-      <v-form ref="durationForm" v-model="isDurationFormValid" @submit.prevent="onSubmitDurationForm">
-        <v-row dense class="mb-0 pb-0">
-          <v-list-item>
-            <v-list-item-avatar>
+  <div>
+    <v-card outlined rounded class="pa-3">
+      <v-card-title>Referral Settings</v-card-title>
+      <v-card-subtitle>
+        Any changes made will not affect referral links generated prior to the update.
+      </v-card-subtitle>
+      <v-card-text>
+        <v-form ref="durationForm" v-model="isDurationFormValid" @submit.prevent="onSubmitDurationForm">
+          <v-row class="align-center">
+            <v-col cols="12" sm="1" class="d-none d-sm-block text-center">
               <v-icon>mdi-timer-sand-complete</v-icon>
-            </v-list-item-avatar>
-            <v-list-item-content>
+            </v-col>
+            <v-col cols="12" sm="7">
               <v-list-item-title>Referral Link Validity Duration</v-list-item-title>
               <v-list-item-subtitle>
                 Generated referral links will expire after a certain amount of time.
               </v-list-item-subtitle>
-            </v-list-item-content>
-            <v-list-item-action>
-              <v-spacer></v-spacer>
-              <v-col cols="12" lg="7">
-                <v-text-field
-                  v-model="model.duration"
-                  outlined
-                  dense
-                  type="number"
-                  hide-details
-                  class="my-auto"
-                  suffix="days"
-                />
-              </v-col>
-            </v-list-item-action>
-          </v-list-item>
-        </v-row>
-        <v-row dense>
-          <v-col>
-            <v-btn
-              type="reset"
-              text
-              v-text="'Reset'"
-            />
-            <v-btn
-              type="submit"
-              color="primary"
-              elevation="0"
-              v-text="'Save'"
-            />
-          </v-col>
-        </v-row>
-      </v-form>
+            </v-col>
+            <v-col cols="12" sm="4">
+              <v-text-field
+                v-model="model.duration"
+                outlined
+                dense
+                type="number"
+                hide-details
+                class="my-auto"
+                suffix="days"
+              />
+            </v-col>
+          </v-row>
 
+          <v-divider class="mb-2 mt-6"/>
 
-      <v-divider class="my-6"></v-divider>
+          <v-row dense>
+            <v-col cols="12" class="my-4">
+              <span class="d-block black--text title">Service Inclusions</span>
+              <span class="d-block subtitle">These are the services that the members can access.</span>
+            </v-col>
+            <v-col cols="12">
+              <!-- Money Transfer Switch -->
+              <v-list-item color="primary">
+                <v-list-item-avatar>
+                  <v-avatar>
+                    <v-icon>mdi-credit-card-fast</v-icon>
+                  </v-avatar>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title>Money Transfer</v-list-item-title>
+                  <v-list-item-subtitle>Allow members to transfer funds to other channels.</v-list-item-subtitle>
+                </v-list-item-content>
+                <v-list-item-action>
+                  <v-switch v-model="model.is_transfer_enabled"></v-switch>
+                </v-list-item-action>
+              </v-list-item>
+              <!-- E-Loading Switch -->
+              <v-list-item color="primary">
+                <v-list-item-avatar>
+                  <v-avatar>
+                    <v-icon>mdi-cellphone-text</v-icon>
+                  </v-avatar>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title>E-Loading</v-list-item-title>
+                  <v-list-item-subtitle>Allow members to buy load from networks such as Globe, Smart, and Sun.
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+                <v-list-item-action>
+                  <v-switch v-model="model.is_eloading_enabled"></v-switch>
+                </v-list-item-action>
+              </v-list-item>
+              <!-- Ticketing Switch -->
+              <v-list-item color="primary" disabled>
+                <v-list-item-avatar>
+                  <v-avatar>
+                    <v-icon>mdi-airplane</v-icon>
+                  </v-avatar>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title>Ticketing</v-list-item-title>
+                  <v-list-item-subtitle>Allow members to buy tickets from White Label.</v-list-item-subtitle>
+                </v-list-item-content>
+                <v-list-item-action>
+                  <v-switch v-model="model.is_ticketing_enabled"></v-switch>
+                </v-list-item-action>
+              </v-list-item>
+              <!-- Bills Payment Switch -->
+              <v-list-item color="primary">
+                <v-list-item-avatar>
+                  <v-avatar>
+                    <v-icon>mdi-airplane</v-icon>
+                  </v-avatar>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title>Bills Payment</v-list-item-title>
+                  <v-list-item-subtitle>Allow members to pay bills through ECPay.</v-list-item-subtitle>
+                </v-list-item-content>
+                <v-list-item-action>
+                  <v-switch v-model="model.is_bills_payment_enabled"></v-switch>
+                </v-list-item-action>
+              </v-list-item>
+            </v-col>
 
-      <v-row dense>
-        <v-col cols="12">
-          <h2 class="font-weight-medium">Requirements</h2>
-          <p class="my-0 py-0">Ask potential members to upload the following images during registration.</p>
-        </v-col>
-        <v-col cols="12">
-          <v-list @click.prevent>
-            <v-list-item-group>
-              <template
-                v-for="(req,index) in model.requirements"
-              >
-                <v-list-item
-                  :key="index"
-                  color="primary"
-                >
-                  <v-list-item-avatar>
-                    <v-icon>{{ req.icon }}</v-icon>
-                  </v-list-item-avatar>
-                  <v-list-item-content>
-                    <v-list-item-title>{{ req.name }}</v-list-item-title>
-                    <v-list-item-subtitle>{{ req.description }}</v-list-item-subtitle>
-                  </v-list-item-content>
-                  <v-list-item-action>
-                    <v-menu offset-y>
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                          color="primary"
-                          dark
-                          v-bind="attrs"
-                          v-on="on"
-                          icon
-                        >
-                          <v-icon>
-                            mdi-dots-horizontal
-                          </v-icon>
-                        </v-btn>
-                      </template>
-                      <v-list>
-                        <v-list-item>
-                          <v-list-item-title>Edit</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item>
-                          <v-list-item-title>Disable</v-list-item-title>
-                        </v-list-item>
-                      </v-list>
-                    </v-menu>
-                  </v-list-item-action>
-                </v-list-item>
-
-                <v-divider
-                  v-if="index < model.requirements.length - 1"
-                  :key="`${index}-divider`"
-                ></v-divider>
-
-              </template>
-            </v-list-item-group>
-
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title>
+            <v-col cols="12" class="text-right">
+              <v-divider class="my-4"/>
+              <v-dialog v-model="showModal" max-width="400">
+                <template #activator="{on, attrs}">
                   <v-btn
-                    block
                     color="primary"
-                    text
-                    @click="toggleNewRequirementModal"
-                  >
-                    Add New
-                  </v-btn>
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-col>
-      </v-row>
-    </v-card-text>
+                    elevation="0"
+                    v-bind="attrs"
+                    v-on="on"
+                    v-text="'Apply'"
+                  />
+                </template>
 
-    <c-new-requirement-modal :show="requirementModal"></c-new-requirement-modal>
-  </v-card>
+                <v-card>
+                  <v-card-title>Apply Changes</v-card-title>
+                  <v-card-text>
+                    You are about to update the referral settings. This change will affect all users and subsequent
+                    referral invites generated in the system. Do you want to continue?
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer/>
+                    <v-btn
+                      :disabled="isSubmitting"
+                      text
+                      @click="showModal = false"
+                      v-text="'Cancel'"
+                    />
+                    <v-btn
+                      :disabled="isSubmitting"
+                      :loading="isSubmitting"
+                      type="submit"
+                      color="primary"
+                      elevation="0"
+                      @click="$refs.durationForm.$el.requestSubmit()"
+                      v-text="'Apply'"
+                    />
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+            </v-col>
+          </v-row>
+        </v-form>
+      </v-card-text>
+    </v-card>
+  </div>
+
 </template>
 
 <script>
-import CNewRequirementModal from "@/components/Settings/CNewRequirementModal";
-
 export default {
-  components: {CNewRequirementModal},
   data: () => ({
-    requirementModal: false,
     isDurationFormValid: false,
+    showModal: false,
+    isSubmitting: false,
     model: {
       duration: 0,
-      requirements: [
-        {
-          name: 'Selfie Photo',
-          description: 'Please upload a selfie. Make sure to take the photo in a well lit area.',
-          icon: 'mdi-image',
-        },
-        {
-          name: 'ID Picture',
-          description: 'Please upload a primary ID with your face on it. (e.g. Driver\'s License, Passport, SSS UMID, etc.)',
-          icon: 'mdi-image',
-        },
-        {
-          name: 'Proof of Payment',
-          description: 'Please upload an image or document such as a GCASH receipt which will serve as a proof of payment.',
-          icon: 'mdi-image',
-        }
-      ]
+      is_transfer_enabled: false,
+      is_eloading_enabled: false,
+      is_ticketing_enabled: false,
+      is_bills_payment_enabled: false,
     },
   }),
   async created() {
     await this.getReferralSettings()
   },
   methods: {
+    /**
+     * Gets the referral settings object from the database and set it as model.
+     *
+     * @return void
+     */
     async getReferralSettings() {
       await this.$axios.get('/api/referral/settings')
         .then((res) => {
-          console.log('Response:')
-          console.log(res)
-          this.model = res.data
+          this.model = res.data?.referral_setting
         })
         .catch((err) => {
-          console.log('Error')
-          console.log(err)
+          this.$notifier.showMessage({
+            content: err.response?.data?.message,
+            color: 'error'
+          })
         })
     },
 
+    /**
+     * Validates the durationForm then first an HTTP request to update the
+     * referral settings.
+     *
+     * @return void
+     */
     async onSubmitDurationForm() {
+      const isInvalid = !this.$refs.durationForm.validate()
+      if (isInvalid) {
+        return
+      }
 
+      this.isSubmitting = true
+
+      await this.$axios.post('api/referral/settings', this.model)
+        .then((response) => {
+          this.$notifier.showMessage({
+            content: response.data?.message,
+            color: 'success'
+          });
+        })
+        .catch((err) => {
+          this.$notifier.showMessage({
+            content: err.response.data?.message,
+            color: 'error'
+          });
+        })
+
+      this.isSubmitting = false
+      this.showModal = false
     },
-    toggleNewRequirementModal() {
-      this.requirementModal = !this.requirementModal
-    }
   }
 }
 </script>

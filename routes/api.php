@@ -26,5 +26,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/profile/password', ['App\Http\Controllers\ProfileController', 'updatePassword']);
 
     Route::resource('referral/settings', \App\Http\Controllers\ReferralSettingController::class);
+    Route::resource('referral/package-inclusions', \App\Http\Controllers\PackageInclusionController::class);
     Route::resource('referral/requirements', \App\Http\Controllers\ReferralRequirementController::class);
 });
